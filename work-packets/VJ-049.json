@@ -1,0 +1,67 @@
+{
+  "id": "VJ-049",
+  "title": "Prepare official Lean upgrade and stable qualification candidate",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P10",
+  "prerequisites": [
+    "VJ-002",
+    "VJ-042",
+    "VJ-043"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "docs/TOOLCHAIN-MAINTENANCE.md",
+    ".github/workflows/lean-upgrade.yml",
+    ".github/workflows/qualify-stable.yml"
+  ],
+  "read_only_contract_paths": [
+    "docs/LEAN-GATES.md",
+    "docs/claim-roots.json"
+  ],
+  "goal": "Reuse manual/scheduled GitHub Actions to prepare exact-pin upgrade candidates without deploying them.",
+  "acceptance_criteria": [
+    "Official RC/stable discovery and best-effort schedule behavior are explicit; no moving selector executes proofs.",
+    "Final stable bytes get new build/replay/semantic and package qualification even if RC source appears unchanged.",
+    "Unavailable checkers/dependency drift become owned blockers; no semantic repair is smuggled through a version bump."
+  ],
+  "human_review": "Workflow/semantic-drift review; hosted enablement remains a separate phase",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "docs/TOOLCHAIN-MAINTENANCE.md",
+    ".github/workflows/lean-upgrade.yml",
+    ".github/workflows/qualify-stable.yml"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-049.json"
+}

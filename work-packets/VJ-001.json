@@ -1,0 +1,62 @@
+{
+  "id": "VJ-001",
+  "title": "Select project ownership, names and provenance policy",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P0",
+  "prerequisites": [],
+  "capstones": [],
+  "allowed_files": [
+    "docs/OWNERSHIP.md",
+    "docs/PROVENANCE.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Prepare one reviewable bootstrap decision; no hosting or registry writes.",
+  "acceptance_criteria": [
+    "Repository/crate name checks and designated contract/release maintainers are recorded as dated evidence.",
+    "Fresh source licensing and third-party reuse rules are explicit; private records and operational data are excluded.",
+    "Bootstrap and publication are distinct actions with no automatic execution."
+  ],
+  "human_review": "Operator ownership decision and independent license/provenance review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "docs/OWNERSHIP.md",
+    "docs/PROVENANCE.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-001.json"
+}

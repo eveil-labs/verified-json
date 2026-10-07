@@ -1,0 +1,62 @@
+{
+  "id": "VJ-051",
+  "title": "Qualify a minimum current-Lean comparator and replay envelope",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P1",
+  "prerequisites": [
+    "VJ-004",
+    "VJ-054"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "docs/VERIFIER-ENVELOPE.md",
+    "verification/envelopes/**"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Inspect and qualify selected existing comparator/export/replay tools for the initial packet kinds without using an unbuilt project wrapper to certify itself.",
+  "acceptance_criteria": [
+    "Freeze exact comparator/exporter/checker/compiler/dependency identities and minimum module footprint on the chosen Lean lane.",
+    "Valid proofs and actual invalid/axiom/changed-target cases are distinguished by the real tools; unsupported layers remain infrastructure failures.",
+    "Known worker-descendant/export race and primitive/string handling limits are either repaired and tested or block qualification.",
+    "Manual independent review records scope; compatibility of each later new declaration/runtime domain is requalified."
+  ],
+  "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "docs/VERIFIER-ENVELOPE.md",
+    "verification/envelopes/**"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-051.json"
+}

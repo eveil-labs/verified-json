@@ -1,0 +1,25 @@
+name: Work packet question
+description: Ask about a frozen target, prerequisite, or blocked validation.
+title: "[Task question] "
+labels: [question]
+body:
+  - type: input
+    id: packet
+    attributes:
+      label: Packet ID and revision
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question or obstruction
+      description: Explain the exact target or tool failure without weakening a statement. Keep private data out of the report.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Reproduction and evidence
+      description: Include the selected toolchain, actual checker verdict, or synthetic counterexample. Do not turn an unavailable check into a mathematical rejection.
+    validations:
+      required: true

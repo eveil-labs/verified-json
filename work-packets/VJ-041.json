@@ -1,0 +1,66 @@
+{
+  "id": "VJ-041",
+  "title": "Prepare regression and local repair/report drafts",
+  "ticket_class": "tests-docs",
+  "phase": "P5",
+  "prerequisites": [
+    "VJ-040",
+    "VJ-038"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "tests/repair-drafts/",
+    "docs/UPSTREAM-REPRODUCER.md",
+    "docs/REPAIR-BOUNDARY.md"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "compatibility/"
+  ],
+  "goal": "Create synthetic maintainer-facing issue/patch templates and repair validation examples.",
+  "acceptance_criteria": [
+    "Draft includes minimized bytes, expected/observed outcomes, exact versions/features, reproducer and regression.",
+    "A repair cannot change frozen contract, remove assertions, or auto-replace deployed binaries.",
+    "Synthetic replay and target contribution checks are documented; external posting and real security disclosure are separate actions."
+  ],
+  "human_review": "Expected behavior and disclosure/repair scope review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "tests/repair-drafts/",
+    "docs/UPSTREAM-REPRODUCER.md",
+    "docs/REPAIR-BOUNDARY.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-041.json"
+}

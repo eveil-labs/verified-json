@@ -1,0 +1,63 @@
+{
+  "id": "VJ-046",
+  "title": "Benchmark unique-input checked workloads and limits",
+  "ticket_class": "tests-docs",
+  "phase": "P7",
+  "prerequisites": [
+    "VJ-045"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "benchmarks/checked/",
+    "docs/PILOT-BENCHMARKS.md"
+  ],
+  "read_only_contract_paths": [
+    "docs/CHECKED-RUNTIME.md",
+    "compatibility/"
+  ],
+  "goal": "Measure complete cold/warm, repeated/all-unique and adversarial workload costs.",
+  "acceptance_criteria": [
+    "Input/build identities and latency distribution, RSS/allocation, cache quotas, hit rates and timeouts are recorded.",
+    "Candidate-only, oracle-only, checked miss/hit and rerun-plus-comparison modes are separated.",
+    "Thresholds are selected from measured pilot evidence; no production support or shape-certification claim follows from repeats."
+  ],
+  "human_review": "Performance/security owner decides acceptable pilot limits",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "benchmarks/checked/",
+    "docs/PILOT-BENCHMARKS.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-046.json"
+}

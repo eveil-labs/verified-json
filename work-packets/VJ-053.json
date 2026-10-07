@@ -1,0 +1,64 @@
+{
+  "id": "VJ-053",
+  "title": "Qualify the operational mathematical submission gate",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P1",
+  "prerequisites": [
+    "VJ-052",
+    "VJ-051"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "tests/verification/canaries/**",
+    "verification/envelopes/**",
+    "docs/VERIFIER-QUALIFICATION.md"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Run the real end-to-end gate on positive/negative submissions before opening the first mathematical tickets.",
+  "acceptance_criteria": [
+    "Actual valid proof/implementation examples pass and direct/hidden placeholders, extra axioms, target drift and disabled kernel checks cannot pass.",
+    "Race/sealing, forged/stale artifacts, missing checker, malformed protocol, unsupported exports and failed writes produce the declared safe verdicts.",
+    "Publish an exact qualified validator.argv and envelope identity only for supported packet kinds and pins; no production theorem exists by inference.",
+    "Bootstrap uses manual review plus real empirical checks; it does not depend on its own mathematical PASS."
+  ],
+  "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "tests/verification/canaries/**",
+    "verification/envelopes/**",
+    "docs/VERIFIER-QUALIFICATION.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-053.json"
+}

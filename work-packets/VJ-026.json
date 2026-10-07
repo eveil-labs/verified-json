@@ -1,0 +1,75 @@
+{
+  "id": "VJ-026",
+  "title": "Implement recursive document driver and termination",
+  "ticket_class": "implementation-with-proofs",
+  "phase": "P3",
+  "prerequisites": [
+    "VJ-011",
+    "VJ-012",
+    "VJ-018",
+    "VJ-019",
+    "VJ-022",
+    "VJ-023",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J07",
+    "J05"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Impl/Parser.lean",
+    "lean/VerifiedJson/Proofs/ParseTermination.lean"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/"
+  ],
+  "goal": "Connect the fixed primitives and combinators with well-founded recursion and one-document consumption.",
+  "acceptance_criteria": [
+    "Every byte input terminates in a reviewed result; no opaque/unreviewed fuel assumption remains.",
+    "Recursion measure decreases and combinator hypotheses are discharged without circular imports.",
+    "Input/depth/work refusals are explicit; termination theorem does not claim native stack safety."
+  ],
+  "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Impl/Parser.lean",
+    "lean/VerifiedJson/Proofs/ParseTermination.lean"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-026.json"
+}

@@ -1,0 +1,69 @@
+{
+  "id": "VJ-033",
+  "title": "Classify public corpus and wire-profile regressions",
+  "ticket_class": "tests-docs",
+  "phase": "P3",
+  "prerequisites": [
+    "VJ-024",
+    "VJ-025",
+    "VJ-028",
+    "VJ-031",
+    "VJ-032"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "tests/corpus/",
+    "tests/regressions/wire/",
+    "docs/CORPUS.md"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "docs/claim-roots.json"
+  ],
+  "goal": "Pin licensed corpus sources and add bounded fixtures for policy-sensitive cases.",
+  "acceptance_criteria": [
+    "JSONTestSuite accepted/rejected/implementation-dependent labels are preserved.",
+    "Every fixture has profile/limit identity and expected category; surrogates/duplicate escaped keys/trailing bytes are represented.",
+    "Corpus observations complement proofs and do not substitute for missing roots; copied fixture notices are retained."
+  ],
+  "human_review": "Fixture provenance and expected-policy review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "tests/corpus/",
+    "tests/regressions/wire/",
+    "docs/CORPUS.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-033.json"
+}

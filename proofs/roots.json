@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "candidate-source-roots; specification and untrusted gate not admitted",
+  "declarations": [
+    "VerifiedJson.Cursor.start_pos",
+    "VerifiedJson.Cursor.peek_none_iff",
+    "VerifiedJson.Cursor.advance_none_iff",
+    "VerifiedJson.Cursor.advance_progress",
+    "VerifiedJson.Grammar.zero_numberToken",
+    "VerifiedJson.Grammar.exponentMarker_not_integer",
+    "VerifiedJson.Number.checkToken_sound",
+    "VerifiedJson.Number.isValidLexeme_sound",
+    "VerifiedJson.Number.scanEnd_bounds",
+    "VerifiedJson.Number.parse_sound",
+    "VerifiedJson.Number.parse_bounds",
+    "VerifiedJson.Number.parse_span",
+    "VerifiedJson.Number.parse_limit",
+    "VerifiedJson.Number.zero_lexeme_valid",
+    "VerifiedJson.Number.incomplete_exponent_rejected",
+    "VerifiedJson.StringParser.scalarUnits_bmp",
+    "VerifiedJson.escapeUnit_length"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "open_capstones": [
+    "full UTF8/string correctness",
+    "number grammar completeness",
+    "full document grammar and semantics",
+    "parser soundness/completeness",
+    "cost/budget theorem",
+    "serializer AST roundtrip",
+    "neutral codec roundtrip",
+    "public native API binding",
+    "binary64",
+    "Rust refinement",
+    "cache"
+  ]
+}

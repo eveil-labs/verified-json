@@ -1,0 +1,69 @@
+{
+  "id": "VJ-005",
+  "title": "Review wire AST and independent JSON relations",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P1",
+  "prerequisites": [
+    "VJ-001",
+    "VJ-002"
+  ],
+  "capstones": [
+    "J02",
+    "J03",
+    "J04",
+    "J05",
+    "J06"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Spec/Wire.lean",
+    "lean/VerifiedJson/Spec/Grammar.lean",
+    "docs/SPEC-WIRE.md"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Draft and independently review wire UTF-16 units, ordered members, number tokens and complete-document grammar.",
+  "acceptance_criteria": [
+    "Wire AST preserves duplicates and number lexemes without claiming whitespace/escape-spelling reconstruction.",
+    "Escaped unpaired surrogates are representable; unescaped UTF-8 and permitted whitespace follow independent grammar relations.",
+    "Constructive accepted/rejected examples establish nonvacuity; relations never depend on parser success."
+  ],
+  "human_review": "Two semantic reviewers; explicit RFC/profile policy decisions",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Spec/Wire.lean",
+    "lean/VerifiedJson/Spec/Grammar.lean",
+    "docs/SPEC-WIRE.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-005.json"
+}

@@ -1,0 +1,68 @@
+{
+  "id": "VJ-050",
+  "title": "Freeze downstream compatibility and stable release checklist",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P10",
+  "prerequisites": [
+    "VJ-043",
+    "VJ-049"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "docs/STABLE-RELEASE.md",
+    "docs/COMPATIBILITY.md",
+    "release/stable-manifest-template.json"
+  ],
+  "read_only_contract_paths": [
+    "docs/ASSURANCE.md",
+    "docs/claim-roots.json",
+    "compatibility/"
+  ],
+  "goal": "Prepare independent versioning, first downstream smoke matrix and manual promotion requirements.",
+  "acceptance_criteria": [
+    "Each claimed API/profile/platform has evidence or an explicit exclusion; binary64 and runtime claims cannot borrow core evidence.",
+    "Packaged source/bytes, dependency/feature closure and release identity are pinned; partial publication reconciliation is planned.",
+    "Only authorized qualified artifacts may promote; optional P7\u2013P9 products are not prerequisites for a correctly scoped core/comparison stable channel.",
+    "If checked-runtime support is claimed, VJ-044 through VJ-046 are additional required evidence; optional runtime does not block the core/comparison stable channel."
+  ],
+  "human_review": "Release owner and independent contract/native/package assurance approval",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "docs/STABLE-RELEASE.md",
+    "docs/COMPATIBILITY.md",
+    "release/stable-manifest-template.json"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-050.json"
+}

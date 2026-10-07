@@ -1,0 +1,64 @@
+{
+  "id": "VJ-040",
+  "title": "Implement bounded discrepancy-preserving shrinker",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P5",
+  "prerequisites": [
+    "VJ-039"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "crates/json-diff/src/shrink.rs",
+    "crates/json-diff/src/cli.rs",
+    "tests/shrinker/"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/Comparison.lean"
+  ],
+  "goal": "Add AST and byte shrinking for one pinned failure class; avoid proving unimplemented global minimality.",
+  "acceptance_criteria": [
+    "Every retained reduction reproduces the same classified discrepancy under fixed builds.",
+    "Cancellation, reduction budget and candidate crashes preserve the original evidence and stop safely.",
+    "A small irreducible test is called minimized, not globally minimal, unless that stronger property is established."
+  ],
+  "human_review": "Infrastructure/counterexample review; no automatic upstream disclosure",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "crates/json-diff/src/shrink.rs",
+    "crates/json-diff/src/cli.rs",
+    "tests/shrinker/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-040.json"
+}

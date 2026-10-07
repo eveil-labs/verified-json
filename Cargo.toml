@@ -1,0 +1,14 @@
+[workspace]
+members = ["crates/json-wire", "crates/json-diff"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0-rc.1"
+edition = "2021"
+license = "Apache-2.0"
+rust-version = "1.96"
+
+[workspace.dependencies]
+json-wire = { path = "crates/json-wire" }
+serde = { version = "=1.0.229", default-features = false, features = ["std"] }
+serde_json = { version = "=1.0.151", default-features = false, features = ["std", "raw_value"] }

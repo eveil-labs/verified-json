@@ -1,0 +1,44 @@
+name: Bootstrap checks (not proof admission)
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bootstrap-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Prepare pinned compiler and offline Cargo cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          stage="$RUNNER_TEMP/verified-json-setup"
+          mkdir "$stage"
+          url='https://github.com/leanprover/lean4/releases/download/v4.35.0-rc4/lean-4.35.0-rc4-linux.tar.zst'
+          curl --fail --location --retry 2 --output "$stage/lean.tar.zst" "$url"
+          printf '%s  %s\n' 'e78e14c54c39a145945833cfcdb219458d650c210847a90dcef8fa8ff05ab51a' "$stage/lean.tar.zst" | sha256sum --check --strict
+          tar --zstd -xf "$stage/lean.tar.zst" -C "$stage"
+          rustup toolchain install 1.96.0 --profile minimal
+          CARGO_HOME="$stage/cargo-home" RUSTUP_TOOLCHAIN=1.96.0 cargo fetch --locked
+      - name: Fresh trusted-bootstrap checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          stage="$RUNNER_TEMP/verified-json-setup"
+          RUSTUP_TOOLCHAIN=1.96.0 python3 -B tools/check.py \
+            --lean-bin "$stage/lean-4.35.0-rc4-linux/bin" \
+            --cargo-home "$stage/cargo-home" \
+            --work "$RUNNER_TEMP/verified-json-checks"
+      - name: State the scope
+        if: always()
+        shell: bash
+        run: |
+          echo 'These checks build and test candidate source. The untrusted submission gate is NOT_QUALIFIED; community proof packets remain NOT_READY.' >> "$GITHUB_STEP_SUMMARY"

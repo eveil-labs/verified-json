@@ -1,0 +1,51 @@
+name: Work packet proposal
+description: Propose one bounded implementation, proof, review, or documentation task.
+title: "[Packet proposal] "
+labels: [packet-proposal]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form proposes a task. It does not create a claim or a Ready proof packet.
+        A maintainer freezes the target and validator before marking the work Ready.
+        Do not paste private JSON, credentials, or undisclosed security findings.
+  - type: input
+    id: packet
+    attributes:
+      label: Packet ID or proposed backlog entry
+      description: Name an existing VJ ticket or request a new bounded sub-issue.
+    validations:
+      required: true
+  - type: dropdown
+    id: task_class
+    attributes:
+      label: Task class
+      options:
+        - Proof only
+        - Implementation with proofs
+        - Tests and documentation
+        - Contract or numerical review
+        - Infrastructure or release
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal and acceptance evidence
+      description: State the exact property or deliverable, its supported domain, and how it will be judged.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Prerequisites and allowed scope
+      description: Link existing blockers, target definitions, and proposed files. Native blocked-by links are added by maintainers.
+    validations:
+      required: true
+  - type: textarea
+    id: review
+    attributes:
+      label: Human review and limits
+      description: Identify specification, runtime, dependency, or checker boundaries requiring review; include non-goals.
+    validations:
+      required: true

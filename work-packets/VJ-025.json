@@ -1,0 +1,70 @@
+{
+  "id": "VJ-025",
+  "title": "Compose parsing completeness within profiles and budgets",
+  "ticket_class": "proof-only",
+  "phase": "P3",
+  "prerequisites": [
+    "VJ-024",
+    "VJ-027",
+    "VJ-028",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J06"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Proofs/ParseComplete.lean"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "lean/VerifiedJson/Impl/"
+  ],
+  "goal": "Prove complete coverage from independent document/profile and sufficient-budget premises.",
+  "acceptance_criteria": [
+    "Every constructor has a constructive witness with derived budgets.",
+    "Parser success and serializer-produced-only inputs are not completeness premises.",
+    "Syntax/profile/limit outcomes remain distinct; full grammar and strict scalar profiles have explicit separate scopes."
+  ],
+  "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Proofs/ParseComplete.lean"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-025.json"
+}

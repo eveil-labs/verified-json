@@ -1,0 +1,72 @@
+{
+  "id": "VJ-012",
+  "title": "Implement bounded exact number-token lexer",
+  "ticket_class": "implementation-with-proofs",
+  "phase": "P2",
+  "prerequisites": [
+    "VJ-009",
+    "VJ-010",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J04",
+    "J07",
+    "J08"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Impl/NumberLexer.lean",
+    "lean/VerifiedJson/Proofs/NumberLexerLocal.lean"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/"
+  ],
+  "goal": "Produce original number tokens with local progress and budget proofs; numerical conversion is separate.",
+  "acceptance_criteria": [
+    "Token spelling is preserved and exponent/digit work is bounded by the reviewed limits.",
+    "Leading zeros, missing fraction/exponent digits, signs and delimiter boundaries have fixtures.",
+    "No floating-point conversion or normalization changes grammar acceptance."
+  ],
+  "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Impl/NumberLexer.lean",
+    "lean/VerifiedJson/Proofs/NumberLexerLocal.lean"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-012.json"
+}

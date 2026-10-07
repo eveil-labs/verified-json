@@ -1,0 +1,80 @@
+{
+  "id": "VJ-055",
+  "title": "Bind binary64 operations into the public oracle and transport",
+  "ticket_class": "implementation-with-proofs",
+  "phase": "P4",
+  "prerequisites": [
+    "VJ-036",
+    "VJ-037",
+    "VJ-032",
+    "VJ-031",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J12",
+    "J13",
+    "J16",
+    "J17"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Impl/OracleApi.lean",
+    "lean/VerifiedJson/Proofs/OracleApi.lean",
+    "lean/VerifiedJson/Proofs/NumericTransport.lean",
+    "tests/numbers/oracle/**",
+    "compatibility/numeric-api.json"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Connect admitted numerical operations to the exact exported oracle API and codec, preserving the separately reviewed numeric profile contract.",
+  "acceptance_criteria": [
+    "Freeze the approved numeric API/profile revision and explicit dispatcher implementation holes before mathematical work.",
+    "Recompose J16 and the numeric J17 branch to the actual J12/J13 operations; compiled closure contains the qualified provider and no unchecked substitute.",
+    "Signed-zero, ties, range/underflow and disabled-profile cases survive the exported operation and neutral codec on the built oracle.",
+    "Numeric cells and release claims stay disabled until this API/artifact binding evidence is accepted."
+  ],
+  "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Impl/OracleApi.lean",
+    "lean/VerifiedJson/Proofs/OracleApi.lean",
+    "lean/VerifiedJson/Proofs/NumericTransport.lean",
+    "tests/numbers/oracle/**",
+    "compatibility/numeric-api.json"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-055.json"
+}

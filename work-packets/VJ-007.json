@@ -1,0 +1,69 @@
+{
+  "id": "VJ-007",
+  "title": "Review independent neutral transport and comparison contract",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P1",
+  "prerequisites": [
+    "VJ-005",
+    "VJ-006"
+  ],
+  "capstones": [
+    "J14",
+    "J17"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Spec/Protocol.lean",
+    "lean/VerifiedJson/Spec/Comparison.lean",
+    "docs/PROTOCOL.md"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/Wire.lean",
+    "lean/VerifiedJson/Spec/Profiles.lean"
+  ],
+  "goal": "Freeze a bounded non-JSON codec and candidate-specific equality projections.",
+  "acceptance_criteria": [
+    "Protocol directly represents wire units, ordered duplicate members, exact tokens, numerical bits and result classes.",
+    "Length framing and decode limits are explicit; candidate JSON parsing cannot serve as its own oracle transport.",
+    "Comparison domains distinguish grammar, profile, numeric, limit and infrastructure disagreements."
+  ],
+  "human_review": "Independent protocol/adapter preservation review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Spec/Protocol.lean",
+    "lean/VerifiedJson/Spec/Comparison.lean",
+    "docs/PROTOCOL.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-007.json"
+}

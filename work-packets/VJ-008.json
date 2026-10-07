@@ -1,0 +1,88 @@
+{
+  "id": "VJ-008",
+  "title": "Create claim-root ledger and concrete packet sealing procedure",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P1",
+  "prerequisites": [
+    "VJ-004",
+    "VJ-005",
+    "VJ-006",
+    "VJ-007"
+  ],
+  "capstones": [
+    "J01",
+    "J02",
+    "J03",
+    "J04",
+    "J05",
+    "J06",
+    "J07",
+    "J08",
+    "J09",
+    "J10",
+    "J11",
+    "J12",
+    "J13",
+    "J14",
+    "J15",
+    "J16",
+    "J17"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Claims.lean",
+    "docs/CLAIMS.md",
+    "docs/claim-roots.json",
+    "work-packets/"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/"
+  ],
+  "goal": "Bind intended J01\u2013J17 obligations to actual elaborated declarations only when those declarations exist.",
+  "acceptance_criteria": [
+    "Unbuilt roots are marked missing rather than synthesized as passed; public API and codec roots remain explicit.",
+    "Sealing fills exact target/source/type/meaning/binding/validator pins and scoped proof-body selectors before a ticket becomes claimable.",
+    "Dependencies refer to merged accepted commits, not proposed PRs; each six-hour scope is rehearsed or split before opening.",
+    "Manual/bootstrap packets may use approved review checklists; mathematical packets require the operational VJ-053 envelope."
+  ],
+  "human_review": "Maintainer semantic owner approves every sealed root and packet",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Claims.lean",
+    "docs/CLAIMS.md",
+    "docs/claim-roots.json",
+    "work-packets/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-008.json"
+}

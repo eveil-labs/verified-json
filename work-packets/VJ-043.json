@@ -1,0 +1,74 @@
+{
+  "id": "VJ-043",
+  "title": "Rehearse one Linux source/CLI alpha package",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P6",
+  "prerequisites": [
+    "VJ-032",
+    "VJ-033",
+    "VJ-038",
+    "VJ-040",
+    "VJ-041",
+    "VJ-042"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "docs/RELEASE-REHEARSAL.md",
+    "docs/ASSURANCE.md",
+    "release/manifest-template.json",
+    "tools/package-check/"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "docs/claim-roots.json"
+  ],
+  "goal": "Prepare an installable source/oracle/CLI candidate and inspect the packaged bytes; no release.",
+  "acceptance_criteria": [
+    "Fresh proof/replay and exact native/platform closure evidence accompanies the archive/package.",
+    "Linux x86-64 install smoke path and user-selected pinned oracle are documented; macOS support is not assumed.",
+    "License/secret/artifact inspection and release-blocking finding disposition complete; exact-token-only alpha explicitly disables binary64 claims if that milestone is unready.",
+    "Binary64-enabled alpha additionally requires VJ-034 through VJ-037; unbuilt optional claims cannot appear enabled in the package manifest.",
+    "Every enabled binary64 release claim additionally requires VJ-055 API/codec/artifact binding evidence."
+  ],
+  "human_review": "Release owner plus independent assurance and package review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "docs/RELEASE-REHEARSAL.md",
+    "docs/ASSURANCE.md",
+    "release/manifest-template.json",
+    "tools/package-check/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-043.json"
+}

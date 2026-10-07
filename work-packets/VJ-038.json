@@ -1,0 +1,70 @@
+{
+  "id": "VJ-038",
+  "title": "Complete feature-isolated Rust adapter profile matrix",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P5",
+  "prerequisites": [
+    "VJ-016",
+    "VJ-031",
+    "VJ-032"
+  ],
+  "capstones": [
+    "J14"
+  ],
+  "allowed_files": [
+    "crates/json-adapter-serde/",
+    "compatibility/serde-profiles/",
+    "tests/adapters/full/"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/Comparison.lean"
+  ],
+  "goal": "Qualify explicit default/f64/exact/raw/order API cells without promising generic Serde verification.",
+  "acceptance_criteria": [
+    "Effective Cargo feature unification is measured and incompatible cells are isolated.",
+    "Custom visitor/RawValue/token observation paths are checked for duplicate/member/number preservation; lossy domains are excluded or explicitly projected.",
+    "Default accuracy differences, declared round-trip guarantees, profile differences and genuine defects remain distinct.",
+    "Only qualified cells are enabled: actual binary64 oracle comparisons additionally require VJ-036 and VJ-037; unavailable cells remain Unsupported, not passed.",
+    "A binary64 cell additionally requires accepted VJ-055 public-API/compiled-oracle binding; proved number modules alone cannot enable it."
+  ],
+  "human_review": "Adapter contract and numerical-classification review; tested/native boundary explicitly retained",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "crates/json-adapter-serde/",
+    "compatibility/serde-profiles/",
+    "tests/adapters/full/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-038.json"
+}

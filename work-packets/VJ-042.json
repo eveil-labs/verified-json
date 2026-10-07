@@ -1,0 +1,67 @@
+{
+  "id": "VJ-042",
+  "title": "Add adversarial mutations for proof and release gates",
+  "ticket_class": "tests-docs",
+  "phase": "P6",
+  "prerequisites": [
+    "VJ-004",
+    "VJ-008",
+    "VJ-032"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "tests/mutants/proof-gates/",
+    "tests/mutants/release/"
+  ],
+  "read_only_contract_paths": [
+    "docs/LEAN-GATES.md",
+    "lean/VerifiedJson/Spec/",
+    "tools/verify-ticket",
+    "tools/verification/**"
+  ],
+  "goal": "Exercise existing gates against intentionally invalid candidate artifacts.",
+  "acceptance_criteria": [
+    "Mutants include false/missing roots, custom axioms, changed definitions, stale artifacts, weak hypotheses and skipped checking.",
+    "Each mutant fails the intended gate; checker-unavailable and failed-write cases are infrastructure rather than proof rejection.",
+    "Unproved extern/implemented_by substitution and forged coverage/package manifests cannot obtain a stronger claim."
+  ],
+  "human_review": "Independent gate-audit review of detection assertions",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "tests/mutants/proof-gates/",
+    "tests/mutants/release/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-042.json"
+}

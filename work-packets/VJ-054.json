@@ -1,0 +1,73 @@
+{
+  "id": "VJ-054",
+  "title": "Prepare the Lean and Rust workspace skeleton",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P0",
+  "prerequisites": [
+    "VJ-001",
+    "VJ-002"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "lean/lakefile.toml",
+    "lean/lean-toolchain",
+    "lean/lake-manifest.json",
+    "lean/VerifiedJson.lean",
+    "Cargo.toml",
+    "crates/json-contract/Cargo.toml",
+    "crates/json-contract/src/lib.rs",
+    "docs/BUILD.md"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Prepare a source-only buildable package skeleton with exact current toolchain identities and no parser/proof claims.",
+  "acceptance_criteria": [
+    "Lean package/root targets and Rust workspace members/build boundaries are declared explicitly.",
+    "A minimal fresh source-only build smoke test runs under the selected stable/RC pins without placeholder or parser correctness claims.",
+    "No hidden build download, reporter, publication action or private path is introduced; setup ownership and dependencies are explicit."
+  ],
+  "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/lakefile.toml",
+    "lean/lean-toolchain",
+    "lean/lake-manifest.json",
+    "lean/VerifiedJson.lean",
+    "Cargo.toml",
+    "crates/json-contract/Cargo.toml",
+    "crates/json-contract/src/lib.rs",
+    "docs/BUILD.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-054.json"
+}

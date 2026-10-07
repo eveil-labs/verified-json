@@ -1,0 +1,69 @@
+{
+  "id": "VJ-036",
+  "title": "Prove arbitrary-decimal binary64 rounding capstone",
+  "ticket_class": "proof-only",
+  "phase": "P4",
+  "prerequisites": [
+    "VJ-035",
+    "VJ-034",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J12"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Proofs/Binary64Round.lean"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "lean/VerifiedJson/Numbers/"
+  ],
+  "goal": "Compose provider and token interpretation proofs into correctly rounded binary64 conversion.",
+  "acceptance_criteria": [
+    "Nearest-even ties, subnormals, signed zero, underflow and overflow satisfy explicit bit/status statements.",
+    "The theorem quantifies over arbitrary supported tokens rather than only formatted finite values.",
+    "Required native bit/bridge assumptions are named; missing provider coverage remains a blocker."
+  ],
+  "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Proofs/Binary64Round.lean"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-036.json"
+}

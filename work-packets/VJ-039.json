@@ -1,0 +1,70 @@
+{
+  "id": "VJ-039",
+  "title": "Implement profiled differential runner and classifier with seeded tests",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P5",
+  "prerequisites": [
+    "VJ-033",
+    "VJ-038"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "crates/json-diff/src/run.rs",
+    "crates/json-diff/src/classify.rs",
+    "tests/generators/",
+    "tests/classifier/",
+    "tests/mutants/candidate/"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/Comparison.lean"
+  ],
+  "goal": "Wire accepted adapters into a bounded local runner and contract-driven classifier, with synthetic generator/mutant fixtures.",
+  "acceptance_criteria": [
+    "Grammar/semantic defects and allowed profile/accuracy/range differences have separate expected classes.",
+    "Seeded candidate defects are detected; permitted disagreements do not become upstream bug claims.",
+    "Every run records pinned inputs/build/profile/limit identities and no private data.",
+    "Numeric-only cells without admitted provider evidence remain Unsupported; synthetic classifier fixtures are not claimed as real conversion evidence."
+  ],
+  "human_review": "Classification semantics and native tool boundary review; no all-input candidate proof",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "crates/json-diff/src/run.rs",
+    "crates/json-diff/src/classify.rs",
+    "tests/generators/",
+    "tests/classifier/",
+    "tests/mutants/candidate/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-039.json"
+}

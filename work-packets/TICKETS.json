@@ -1,0 +1,4218 @@
+{
+  "schema_version": 1,
+  "document_kind": "verified-json-candidate-work-packet-index",
+  "status": "candidate-unfrozen",
+  "prepared_date": "2026-10-07",
+  "project_name": "verified-json",
+  "project_name_status": "operator-approved",
+  "source_plan": {
+    "logical_name": "Verified JSON project implementation and release plan",
+    "sha256": "07ab8c2bbb1ec40070aa7bdf96cffa2b9bffd9726a051b523af8313c5a915fd3"
+  },
+  "claim_policy": {
+    "duration_hours": 6,
+    "maximum_duration_hours": 6,
+    "coordination_system": "Native GitHub Issues/sub-issues/blocked-by relationships/comments/assignees/Projects",
+    "reservation_style": "Courtesy reservation with contributor comment and maintainer acknowledgment",
+    "reservation_comment_template": "I intend to work on VJ-NNN, packet COMMIT:PATH (DIGEST), for six hours after maintainer acknowledgment. My scope is the sealed packet; I will submit progress or release the reservation before expiry.",
+    "acknowledgment_required": true,
+    "start_and_expiry": "Maintainer records acknowledged start and six-hour expiry in UTC on the issue/Projects field.",
+    "expiry": "Manual courtesy expiry and reassignment; no scheduled bot.",
+    "renewal": "Explicit maintainer review of progress and remaining scope.",
+    "live_claims": [],
+    "claim_is_authority": false,
+    "automation_candidate": {
+      "repository": "leanprover-community/intentions",
+      "status": "optional-deferred",
+      "source_commit": null,
+      "qualification_required": true,
+      "live_commands_enabled": false,
+      "implementation_ticket": null
+    }
+  },
+  "packet_policy": {
+    "immutable_contract_location_candidate": "work-packets/VJ-NNN.json at exact committed revision",
+    "issue_body_is_contract": false,
+    "public_paths_are_prospective": true,
+    "all_claims_disabled_until_bootstrap": true,
+    "estimated_implementation_hours": null,
+    "six_hours_is": "claim lease, not promised completion time",
+    "readiness_requires": [
+      "Task-class-specific frozen source/scope and acceptance policy; no missing required identity",
+      "Accepted prerequisite artifacts reviewed at exact revisions",
+      "Proof classes require an operational qualified validator and actual declaration/type/meaning bindings",
+      "Bootstrap and human review classes use a separately approved manual checklist; no circular requirement to pass an unbuilt verifier",
+      "One bounded reviewable deliverable; split broad tasks before reservations",
+      "Native GitHub status and acknowledged manual reservation reconciled by maintainers"
+    ],
+    "coordination_dynamic_source": "Native GitHub",
+    "immutable_packet_has_no_live_reservation_state": true,
+    "operational_validator_field": "validator.argv",
+    "activation_by_class": {
+      "proof-only": "Actual frozen Lean target/dependency/envelope plus qualified non-null validator.argv required",
+      "implementation-with-proofs": "Actual explicit implementation holes, independent total contract and qualified non-null validator.argv required",
+      "maintainer-contract-release-infrastructure": "Frozen manual review policy and applicable checks; nonapplicable mathematical fields have explicit reasons; no self-certification",
+      "tests-docs": "Frozen scope/expected evidence and applicable empirical/manual checks; no proof claim from tests"
+    }
+  },
+  "gate_definitions": [
+    {
+      "id": "G00",
+      "name": "Frozen inputs/readiness",
+      "requirement": "Task-class-specific frozen source, scope and applicable acceptance identities exist; mathematical classes require exact declaration/compiler/dependency/validator bindings, while manual-review tasks document nonapplicable fields with reasons."
+    },
+    {
+      "id": "G01",
+      "name": "Fresh build/artifact verdict",
+      "requirement": "Pinned commands complete with correct exit codes and newly produced expected artifacts; missing checks and infrastructure errors cannot pass."
+    },
+    {
+      "id": "G02",
+      "name": "Meaning and binding preservation",
+      "requirement": "Compare elaborated target types, hypotheses, semantics-bearing definitions/instances, input/output bindings and public-root mappings against frozen accepted records; textual names alone are insufficient."
+    },
+    {
+      "id": "G03",
+      "name": "Axiom/native boundary audit",
+      "requirement": "Named roots and transitive proof dependencies satisfy the reviewed axiom basis; no placeholder/custom axiom or unproved native substitute gains a proved claim."
+    },
+    {
+      "id": "G04",
+      "name": "Replay",
+      "requirement": "Fresh kernel replay and supported independent checker evidence cover the sealed closure; unsupported/incompatible checker is an explicit infrastructure gap."
+    },
+    {
+      "id": "G05",
+      "name": "Existing-declaration reuse",
+      "requirement": "Before sealing proof work search the declaration index by name, statement and module; bind qualified existing results rather than reproving them."
+    },
+    {
+      "id": "G06",
+      "name": "Nonvacuity and adversarial fixtures",
+      "requirement": "Constructive witnesses, syntax/profile/limit negatives and scoped mutants validate root premises and error-category distinctions."
+    },
+    {
+      "id": "G07",
+      "name": "Allowed diff",
+      "requirement": "Only packet-allowed files/selectors changed; proof-only edits preserve all existing declarations/implementation/meaning, implementation-with-proofs edits preserve independently reviewed spec and root types."
+    },
+    {
+      "id": "G08",
+      "name": "Scoped empirical checks",
+      "requirement": "Relevant tests/corpus/protocol/package evidence matches exact builds and profiles; it is not labeled an all-input proof."
+    },
+    {
+      "id": "G09",
+      "name": "Independent acceptance",
+      "requirement": "Builder does not approve its own semantic, checker, CI, release or native-boundary changes; unresolved blockers prevent acceptance."
+    }
+  ],
+  "capstone_ledger": [
+    {
+      "id": "J01",
+      "goal": "Byte/cursor bounds",
+      "ticket_ids": [
+        "VJ-009",
+        "VJ-010"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J02",
+      "goal": "UTF-8 scalar relation",
+      "ticket_ids": [
+        "VJ-017",
+        "VJ-018"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J03",
+      "goal": "Wire escape preservation",
+      "ticket_ids": [
+        "VJ-019"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J04",
+      "goal": "Exact number grammar",
+      "ticket_ids": [
+        "VJ-012",
+        "VJ-021"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J05",
+      "goal": "Independent parsing soundness",
+      "ticket_ids": [
+        "VJ-024"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J06",
+      "goal": "Profile/budget completeness",
+      "ticket_ids": [
+        "VJ-025"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J07",
+      "goal": "Termination",
+      "ticket_ids": [
+        "VJ-026"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J08",
+      "goal": "Modeled resource bounds",
+      "ticket_ids": [
+        "VJ-027"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J09",
+      "goal": "Valid serializer output",
+      "ticket_ids": [
+        "VJ-029"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J10",
+      "goal": "Semantic AST round trip",
+      "ticket_ids": [
+        "VJ-030"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J11",
+      "goal": "Scalar/duplicate profile validation",
+      "ticket_ids": [
+        "VJ-020",
+        "VJ-028"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J12",
+      "goal": "Arbitrary supported decimal rounding",
+      "ticket_ids": [
+        "VJ-035",
+        "VJ-036",
+        "VJ-055"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J13",
+      "goal": "Finite float serialization",
+      "ticket_ids": [
+        "VJ-037",
+        "VJ-055"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J14",
+      "goal": "Adapter preservation or explicit tested boundary",
+      "ticket_ids": [
+        "VJ-016",
+        "VJ-038"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J15",
+      "goal": "Approved cache result model",
+      "ticket_ids": [
+        "VJ-044"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J16",
+      "goal": "Public API contract and concrete boundary",
+      "ticket_ids": [
+        "VJ-032",
+        "VJ-045",
+        "VJ-048",
+        "VJ-055"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    },
+    {
+      "id": "J17",
+      "goal": "Neutral transport preservation",
+      "ticket_ids": [
+        "VJ-031",
+        "VJ-055"
+      ],
+      "actual_declaration_bindings": [],
+      "required_type_digest": null,
+      "meaning_closure_digest": null,
+      "status": "intended-not-built"
+    }
+  ],
+  "release_readiness": {
+    "core_exact_token_candidate_requires": [
+      "VJ-024",
+      "VJ-025",
+      "VJ-026",
+      "VJ-027",
+      "VJ-028",
+      "VJ-029",
+      "VJ-030",
+      "VJ-031",
+      "VJ-032",
+      "VJ-033",
+      "VJ-038",
+      "VJ-039",
+      "VJ-040",
+      "VJ-041",
+      "VJ-042",
+      "VJ-043"
+    ],
+    "binary64_claim_requires": [
+      "VJ-034",
+      "VJ-035",
+      "VJ-036",
+      "VJ-037",
+      "VJ-055"
+    ],
+    "checked_runtime_claim_requires": [
+      "VJ-044",
+      "VJ-045",
+      "VJ-046"
+    ],
+    "feedback_external_reporting_requires": [
+      "VJ-047",
+      "Separate explicit posting phase"
+    ],
+    "proved_rust_acceleration_requires": [
+      "VJ-048"
+    ],
+    "stable_channel_requires": [
+      "VJ-049",
+      "VJ-050",
+      "Fresh final-toolchain/artifact qualification",
+      "Separate explicit publication phase"
+    ],
+    "optional_products_do_not_block_scoped_core_release": true,
+    "first_mathematical_tickets_require": [
+      "VJ-051",
+      "VJ-052",
+      "VJ-053",
+      "VJ-054"
+    ]
+  },
+  "tickets": [
+    {
+      "id": "VJ-001",
+      "title": "Select project ownership, names and provenance policy",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P0",
+      "prerequisites": [],
+      "capstones": [],
+      "allowed_files": [
+        "docs/OWNERSHIP.md",
+        "docs/PROVENANCE.md",
+        "LICENSE",
+        "NOTICE"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Prepare one reviewable bootstrap decision; no hosting or registry writes.",
+      "acceptance_criteria": [
+        "Repository/crate name checks and designated contract/release maintainers are recorded as dated evidence.",
+        "Fresh source licensing and third-party reuse rules are explicit; private records and operational data are excluded.",
+        "Bootstrap and publication are distinct actions with no automatic execution."
+      ],
+      "human_review": "Operator ownership decision and independent license/provenance review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/OWNERSHIP.md",
+        "docs/PROVENANCE.md",
+        "LICENSE",
+        "NOTICE"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-001.json"
+    },
+    {
+      "id": "VJ-002",
+      "title": "Freeze stable and development Lean lane candidates",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P0",
+      "prerequisites": [
+        "VJ-001"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "lean-toolchain",
+        "lake-manifest.json",
+        "docs/TOOLCHAINS.md",
+        "compatibility/toolchains.json"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Qualify exact current stable and RC/dependency candidates without changing the governed corpus.",
+      "acceptance_criteria": [
+        "Official release identities and artifact hashes are recorded; each execution pin is immutable.",
+        "Effective compiler after dependency resolution equals the selected lane; caches are isolated by complete closure.",
+        "If no newer RC exists, stable development fallback is explicit; failed checker/dependency compatibility remains an infrastructure blocker."
+      ],
+      "human_review": "Toolchain/dependency admission review; no automatic downgrade",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean-toolchain",
+        "lake-manifest.json",
+        "docs/TOOLCHAINS.md",
+        "compatibility/toolchains.json"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-002.json"
+    },
+    {
+      "id": "VJ-003",
+      "title": "Prepare native GitHub six-hour courtesy reservations",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P0",
+      "prerequisites": [
+        "VJ-001"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "docs/CLAIM-WORKFLOW.md"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Use native Issues, sub-issues, dependencies, comments, assignees and Projects; no bot or custom tracker.",
+      "acceptance_criteria": [
+        "One issue points to one immutable packet revision; native blocked-by and phase parent relationships mirror its prerequisite IDs.",
+        "Contributor comments with packet identity and proposed six-hour interval; maintainer acknowledges/assigns and records UTC start/expiry in the issue or Projects field.",
+        "Expiry, cancellation and reassignment are manual coordination actions; stale reservations never authorize merge or change the frozen contract."
+      ],
+      "human_review": "Maintainer qualification of repository permissions, manual reservation/reassignment procedure and readiness gate",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/CLAIM-WORKFLOW.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-003.json"
+    },
+    {
+      "id": "VJ-004",
+      "title": "Prepare frozen-packet and Lean acceptance gate contract",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-002"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "docs/WORK-PACKETS.md",
+        "docs/LEAN-GATES.md",
+        "tools/verify-ticket"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Define one small future tools/verify-ticket entry point and reuse qualified Lean checkers; no claim database or new product.",
+      "acceptance_criteria": [
+        "Packet schema requires exact source, theorem types, definition/instance closure, bindings and command identities before readiness.",
+        "Validator plan refuses changed meaning, files outside allowlist, missing dependencies, custom axioms and unsupported native substitution claims.",
+        "Existing declaration-index and kernel replay facilities are inventoried before any bespoke checking code is proposed.",
+        "This defines the contract only: VJ-051/VJ-052/VJ-053 separately implement and qualify the operational gate before mathematical claims."
+      ],
+      "human_review": "Independent reviewer of checker policy and executable gate definitions",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/WORK-PACKETS.md",
+        "docs/LEAN-GATES.md",
+        "tools/verify-ticket"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-004.json"
+    },
+    {
+      "id": "VJ-005",
+      "title": "Review wire AST and independent JSON relations",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-001",
+        "VJ-002"
+      ],
+      "capstones": [
+        "J02",
+        "J03",
+        "J04",
+        "J05",
+        "J06"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Spec/Wire.lean",
+        "lean/VerifiedJson/Spec/Grammar.lean",
+        "docs/SPEC-WIRE.md"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Draft and independently review wire UTF-16 units, ordered members, number tokens and complete-document grammar.",
+      "acceptance_criteria": [
+        "Wire AST preserves duplicates and number lexemes without claiming whitespace/escape-spelling reconstruction.",
+        "Escaped unpaired surrogates are representable; unescaped UTF-8 and permitted whitespace follow independent grammar relations.",
+        "Constructive accepted/rejected examples establish nonvacuity; relations never depend on parser success."
+      ],
+      "human_review": "Two semantic reviewers; explicit RFC/profile policy decisions",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Spec/Wire.lean",
+        "lean/VerifiedJson/Spec/Grammar.lean",
+        "docs/SPEC-WIRE.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-005.json"
+    },
+    {
+      "id": "VJ-006",
+      "title": "Review budgets, results, profiles and public API predicates",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-005"
+      ],
+      "capstones": [
+        "J07",
+        "J08",
+        "J09",
+        "J10",
+        "J11",
+        "J12",
+        "J13",
+        "J15",
+        "J16"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Spec/Profiles.lean",
+        "lean/VerifiedJson/Spec/Budgets.lean",
+        "lean/VerifiedJson/Spec/PublicApi.lean",
+        "docs/SPEC-PROFILES.md"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Wire.lean",
+        "lean/VerifiedJson/Spec/Grammar.lean"
+      ],
+      "goal": "Freeze result categories and scope sufficient to state all core and later runtime theorems.",
+      "acceptance_criteria": [
+        "Accepted, InvalidSyntax, ProfileRejected, LimitExceeded, Unsupported and InfrastructureFailure have disjoint documented meanings.",
+        "WellFormed AST and budget sufficiency are defined independently of parser/serializer completion.",
+        "Scalar/duplicate/number policies, signed-zero/range decisions and returned-result resource operations are explicit; concrete defaults need human selection."
+      ],
+      "human_review": "Semantic and security review of defaults, rejection reasons and resource-model limits",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Spec/Profiles.lean",
+        "lean/VerifiedJson/Spec/Budgets.lean",
+        "lean/VerifiedJson/Spec/PublicApi.lean",
+        "docs/SPEC-PROFILES.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-006.json"
+    },
+    {
+      "id": "VJ-007",
+      "title": "Review independent neutral transport and comparison contract",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-005",
+        "VJ-006"
+      ],
+      "capstones": [
+        "J14",
+        "J17"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Spec/Protocol.lean",
+        "lean/VerifiedJson/Spec/Comparison.lean",
+        "docs/PROTOCOL.md"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Wire.lean",
+        "lean/VerifiedJson/Spec/Profiles.lean"
+      ],
+      "goal": "Freeze a bounded non-JSON codec and candidate-specific equality projections.",
+      "acceptance_criteria": [
+        "Protocol directly represents wire units, ordered duplicate members, exact tokens, numerical bits and result classes.",
+        "Length framing and decode limits are explicit; candidate JSON parsing cannot serve as its own oracle transport.",
+        "Comparison domains distinguish grammar, profile, numeric, limit and infrastructure disagreements."
+      ],
+      "human_review": "Independent protocol/adapter preservation review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Spec/Protocol.lean",
+        "lean/VerifiedJson/Spec/Comparison.lean",
+        "docs/PROTOCOL.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-007.json"
+    },
+    {
+      "id": "VJ-008",
+      "title": "Create claim-root ledger and concrete packet sealing procedure",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-004",
+        "VJ-005",
+        "VJ-006",
+        "VJ-007"
+      ],
+      "capstones": [
+        "J01",
+        "J02",
+        "J03",
+        "J04",
+        "J05",
+        "J06",
+        "J07",
+        "J08",
+        "J09",
+        "J10",
+        "J11",
+        "J12",
+        "J13",
+        "J14",
+        "J15",
+        "J16",
+        "J17"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Claims.lean",
+        "docs/CLAIMS.md",
+        "docs/claim-roots.json",
+        "work-packets/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Bind intended J01\u2013J17 obligations to actual elaborated declarations only when those declarations exist.",
+      "acceptance_criteria": [
+        "Unbuilt roots are marked missing rather than synthesized as passed; public API and codec roots remain explicit.",
+        "Sealing fills exact target/source/type/meaning/binding/validator pins and scoped proof-body selectors before a ticket becomes claimable.",
+        "Dependencies refer to merged accepted commits, not proposed PRs; each six-hour scope is rehearsed or split before opening.",
+        "Manual/bootstrap packets may use approved review checklists; mathematical packets require the operational VJ-053 envelope."
+      ],
+      "human_review": "Maintainer semantic owner approves every sealed root and packet",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Claims.lean",
+        "docs/CLAIMS.md",
+        "docs/claim-roots.json",
+        "work-packets/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-008.json"
+    },
+    {
+      "id": "VJ-009",
+      "title": "Implement bounded byte cursor read primitives",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-005",
+        "VJ-006",
+        "VJ-008",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J01"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Cursor.lean",
+        "lean/VerifiedJson/Proofs/CursorRead.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Implement one cursor module and prove read bounds against its frozen relation.",
+      "acceptance_criteria": [
+        "Read at end returns the specified outcome; successful reads return the input byte at a proved valid index.",
+        "Empty input and last-byte fixtures pass; cursor/result representation changes are excluded.",
+        "Implementation bodies may change only within the sealed Cursor module; target statements and definitions in Spec remain frozen."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Cursor.lean",
+        "lean/VerifiedJson/Proofs/CursorRead.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-009.json"
+    },
+    {
+      "id": "VJ-010",
+      "title": "Prove cursor advance and checked-length arithmetic bounds",
+      "ticket_class": "proof-only",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-009",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J01",
+        "J08"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/CursorAdvance.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/Cursor.lean"
+      ],
+      "goal": "Discharge only frozen advance/addition/progress obligations in the accepted primitive implementation.",
+      "acceptance_criteria": [
+        "Advance cannot exceed input or wrap an arithmetic boundary.",
+        "Progress and failure cases match the independent operation relation.",
+        "No implementation, statement, instance-resolution or profile change is accepted as a proof repair."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/CursorAdvance.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-010.json"
+    },
+    {
+      "id": "VJ-011",
+      "title": "Implement whitespace and fixed literal lexers",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-009",
+        "VJ-010",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J05",
+        "J07"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Literals.lean",
+        "lean/VerifiedJson/Proofs/Literals.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/Cursor.lean"
+      ],
+      "goal": "Add only whitespace/null/true/false token primitives.",
+      "acceptance_criteria": [
+        "Successful tokens match independent literal/whitespace relations with consumed-index bounds.",
+        "Truncation, suffixes and forbidden whitespace fixtures retain documented outcomes.",
+        "Each loop's progress/remaining-input measure is proved; trailing-document policy is left to the document wrapper."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Literals.lean",
+        "lean/VerifiedJson/Proofs/Literals.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-011.json"
+    },
+    {
+      "id": "VJ-012",
+      "title": "Implement bounded exact number-token lexer",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-009",
+        "VJ-010",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J04",
+        "J07",
+        "J08"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/NumberLexer.lean",
+        "lean/VerifiedJson/Proofs/NumberLexerLocal.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Produce original number tokens with local progress and budget proofs; numerical conversion is separate.",
+      "acceptance_criteria": [
+        "Token spelling is preserved and exponent/digit work is bounded by the reviewed limits.",
+        "Leading zeros, missing fraction/exponent digits, signs and delimiter boundaries have fixtures.",
+        "No floating-point conversion or normalization changes grammar acceptance."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/NumberLexer.lean",
+        "lean/VerifiedJson/Proofs/NumberLexerLocal.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-012.json"
+    },
+    {
+      "id": "VJ-013",
+      "title": "Build one scalar-and-container vertical slice",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-011",
+        "VJ-012",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J05",
+        "J07",
+        "J08"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/VerticalSlice.lean",
+        "lean/VerifiedJson/Proofs/VerticalSlice.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Compose literal/number tokens and one shallow array/object slice through frozen parser interfaces.",
+      "acceptance_criteria": [
+        "Only the declared bounded slice is claimed; strings/deeper cases return Unsupported or use separately specified interfaces.",
+        "Positive and rejection paths bind to independent slice relations.",
+        "One interface/driver abstraction is ready for later combinators without treating slice success as full JSON completeness."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/VerticalSlice.lean",
+        "lean/VerifiedJson/Proofs/VerticalSlice.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-013.json"
+    },
+    {
+      "id": "VJ-014",
+      "title": "Implement scalar neutral codec prototype",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-007",
+        "VJ-013",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J17"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/ProtocolScalar.lean",
+        "lean/VerifiedJson/Proofs/ProtocolScalar.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Protocol.lean"
+      ],
+      "goal": "Encode/decode the vertical-slice outcomes with length-delimited frames.",
+      "acceptance_criteria": [
+        "Scalar token/result round trips are proved within explicit frame limits.",
+        "Malformed lengths, truncation and wrong versions are distinct transport outcomes.",
+        "Codec never invokes the Rust candidate parser; exact wire unit/bit distinctions are retained."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/ProtocolScalar.lean",
+        "lean/VerifiedJson/Proofs/ProtocolScalar.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-014.json"
+    },
+    {
+      "id": "VJ-015",
+      "title": "Prepare bounded subprocess oracle transport prototype",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-002",
+        "VJ-007",
+        "VJ-013",
+        "VJ-014"
+      ],
+      "capstones": [
+        "J16",
+        "J17"
+      ],
+      "allowed_files": [
+        "crates/json-oracle/",
+        "docs/ORACLE-TRANSPORT.md",
+        "tests/transport/prototype/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/ProtocolScalar.lean"
+      ],
+      "goal": "Implement and test one pinned-executable subprocess boundary as explicitly trusted/tested infrastructure.",
+      "acceptance_criteria": [
+        "Separate diagnostics and length-bounded frames survive chunking/truncation tests.",
+        "Missing readiness, timeout and worker death are InfrastructureFailure; partial output cannot approve a result.",
+        "Executable/target/protocol identities are checked and no hidden tool download occurs."
+      ],
+      "human_review": "Independent native transport/termination/resource-boundary review; no Rust proof claim",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "crates/json-oracle/",
+        "docs/ORACLE-TRANSPORT.md",
+        "tests/transport/prototype/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-015.json"
+    },
+    {
+      "id": "VJ-016",
+      "title": "Prepare one isolated serde_json smoke adapter",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P2",
+      "prerequisites": [
+        "VJ-002",
+        "VJ-007",
+        "VJ-015"
+      ],
+      "capstones": [
+        "J14"
+      ],
+      "allowed_files": [
+        "crates/json-adapter-serde/",
+        "compatibility/serde-smoke.json",
+        "tests/adapters/smoke/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Comparison.lean"
+      ],
+      "goal": "Build one exact Rust API/feature cell for a reproducible synthetic discrepancy.",
+      "acceptance_criteria": [
+        "Target source/checksum, lock, Rust target and effective feature set are observed, not inferred from requested features.",
+        "Smoke scope identifies where Value/visitor conversion loses distinctions; it never claims complete lossless equivalence.",
+        "A deliberately seeded mismatch is reproducible with pinned outcomes and input; no upstream bug is fabricated."
+      ],
+      "human_review": "Adapter/numerical policy review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "crates/json-adapter-serde/",
+        "compatibility/serde-smoke.json",
+        "tests/adapters/smoke/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-016.json"
+    },
+    {
+      "id": "VJ-017",
+      "title": "Implement UTF-8 decoding to wire units with soundness",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-009",
+        "VJ-010",
+        "VJ-005",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J02"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Utf8.lean",
+        "lean/VerifiedJson/Proofs/Utf8Sound.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Wire.lean"
+      ],
+      "goal": "Decode valid raw scalars and encode them into UTF-16 units.",
+      "acceptance_criteria": [
+        "Successful decodes satisfy the frozen scalar/UTF-16 relation.",
+        "Overlong forms, continuation errors, surrogate encodings and out-of-range scalars are rejected appropriately.",
+        "Input progress, output-unit bounds and maximum scalar encoding cases are covered."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Utf8.lean",
+        "lean/VerifiedJson/Proofs/Utf8Sound.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-017.json"
+    },
+    {
+      "id": "VJ-018",
+      "title": "Prove UTF-8 decoder completeness",
+      "ticket_class": "proof-only",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-017",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J02"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/Utf8Complete.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/Utf8.lean"
+      ],
+      "goal": "Prove every admitted raw scalar encoding reaches its expected units under sufficient declared limits.",
+      "acceptance_criteria": [
+        "Completeness premise is independent valid encoding plus budget sufficiency, never decoder success.",
+        "One-through-four-byte positive witnesses and malformed rejection witnesses are retained.",
+        "Frozen decoder and semantic closure are unchanged."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/Utf8Complete.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-018.json"
+    },
+    {
+      "id": "VJ-019",
+      "title": "Implement string escape decoding and preservation",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-011",
+        "VJ-017",
+        "VJ-018",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J03",
+        "J07",
+        "J08"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/StringLexer.lean",
+        "lean/VerifiedJson/Proofs/Escapes.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Add string termination, simple escapes and four-hex-unit escapes against the wire relation.",
+      "acceptance_criteria": [
+        "Each escaped code unit is preserved, including lone surrogates.",
+        "Equivalent raw/escaped supplementary characters give equal wire units; invalid hex/truncated escape/control-byte cases are specified.",
+        "Consumed-input, decoded-output and work bounds hold; no Unicode normalization occurs."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/StringLexer.lean",
+        "lean/VerifiedJson/Proofs/Escapes.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-019.json"
+    },
+    {
+      "id": "VJ-020",
+      "title": "Implement strict scalar pairing validation",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-006",
+        "VJ-019",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J11"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/ScalarProfile.lean",
+        "lean/VerifiedJson/Proofs/ScalarProfile.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Profiles.lean"
+      ],
+      "goal": "Validate wire units against the independently reviewed scalar-profile predicate.",
+      "acceptance_criteria": [
+        "Successful and rejected validation outcomes are proved against surrogate pairing.",
+        "Raw/escaped supplementary forms agree; lone high/low surrogates remain valid wire data but fail the selected scalar profile.",
+        "Key spelling/normalization is unchanged; bounds include deeply nested profile traversal only where the sealed scope covers it."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/ScalarProfile.lean",
+        "lean/VerifiedJson/Proofs/ScalarProfile.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-020.json"
+    },
+    {
+      "id": "VJ-021",
+      "title": "Prove arbitrary-input number grammar equivalence",
+      "ticket_class": "proof-only",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-012",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J04"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/NumberLexerComplete.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/NumberLexer.lean"
+      ],
+      "goal": "Compose soundness/completeness for the frozen number lexer with exact token boundaries.",
+      "acceptance_criteria": [
+        "Accepted lexemes satisfy the grammar and every admitted lexeme within limits is accepted.",
+        "Malformed numeric forms are not hidden behind parser-success premises.",
+        "Suffix/consumed-index results distinguish lexing from complete-document validation."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/NumberLexerComplete.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-021.json"
+    },
+    {
+      "id": "VJ-022",
+      "title": "Implement array combinator and structural invariant",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-011",
+        "VJ-019",
+        "VJ-021",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J05",
+        "J07",
+        "J08"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Arrays.lean",
+        "lean/VerifiedJson/Proofs/Arrays.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Build one parameterized element-parser combinator with frozen element correctness assumptions.",
+      "acceptance_criteria": [
+        "Array result sequence and delimiters satisfy the independent relation when the supplied element contract holds.",
+        "Separator/trailing-comma/truncation fixtures and local progress/cost obligations pass.",
+        "The assumption cannot be satisfied by a circular self-proof; recursion is discharged in the separate driver ticket."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Arrays.lean",
+        "lean/VerifiedJson/Proofs/Arrays.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-022.json"
+    },
+    {
+      "id": "VJ-023",
+      "title": "Implement object-member combinator and sequence invariant",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-011",
+        "VJ-019",
+        "VJ-021",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J05",
+        "J07",
+        "J08"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Objects.lean",
+        "lean/VerifiedJson/Proofs/Objects.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Build the object combinator using ordered member sequences and a parameterized value parser.",
+      "acceptance_criteria": [
+        "Members and duplicate keys remain in source order after decoded-key parsing.",
+        "Colon/separator/trailing-comma/truncation tests and local bounds pass.",
+        "No intermediate map silently collapses duplicates; recursion assumptions are discharged by the driver."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Objects.lean",
+        "lean/VerifiedJson/Proofs/Objects.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-023.json"
+    },
+    {
+      "id": "VJ-024",
+      "title": "Compose full document parsing soundness",
+      "ticket_class": "proof-only",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-026",
+        "VJ-018",
+        "VJ-019",
+        "VJ-021",
+        "VJ-022",
+        "VJ-023",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J05"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/ParseSound.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/"
+      ],
+      "goal": "Discharge the frozen Accepted-implies-independent-document-relation root by module composition.",
+      "acceptance_criteria": [
+        "All constructors and complete-document consumption are covered.",
+        "Trailing non-whitespace and bad nested tokens cannot be accepted.",
+        "Top-level theorem type, parser body and relation closure match the frozen packet; helper lemmas cannot redefine acceptance."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/ParseSound.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-024.json"
+    },
+    {
+      "id": "VJ-025",
+      "title": "Compose parsing completeness within profiles and budgets",
+      "ticket_class": "proof-only",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-024",
+        "VJ-027",
+        "VJ-028",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J06"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/ParseComplete.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/"
+      ],
+      "goal": "Prove complete coverage from independent document/profile and sufficient-budget premises.",
+      "acceptance_criteria": [
+        "Every constructor has a constructive witness with derived budgets.",
+        "Parser success and serializer-produced-only inputs are not completeness premises.",
+        "Syntax/profile/limit outcomes remain distinct; full grammar and strict scalar profiles have explicit separate scopes."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/ParseComplete.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-025.json"
+    },
+    {
+      "id": "VJ-026",
+      "title": "Implement recursive document driver and termination",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-011",
+        "VJ-012",
+        "VJ-018",
+        "VJ-019",
+        "VJ-022",
+        "VJ-023",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J07",
+        "J05"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Parser.lean",
+        "lean/VerifiedJson/Proofs/ParseTermination.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Connect the fixed primitives and combinators with well-founded recursion and one-document consumption.",
+      "acceptance_criteria": [
+        "Every byte input terminates in a reviewed result; no opaque/unreviewed fuel assumption remains.",
+        "Recursion measure decreases and combinator hypotheses are discharged without circular imports.",
+        "Input/depth/work refusals are explicit; termination theorem does not claim native stack safety."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Parser.lean",
+        "lean/VerifiedJson/Proofs/ParseTermination.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-026.json"
+    },
+    {
+      "id": "VJ-027",
+      "title": "Prove modeled parser and returned-AST resource bounds",
+      "ticket_class": "proof-only",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-026",
+        "VJ-006",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J08"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/ParseResources.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/"
+      ],
+      "goal": "Discharge frozen cost/allocation/length bounds for the selected core profile.",
+      "acceptance_criteria": [
+        "The counted operation model and its native limitations are stated, including output nodes/units/tokens and arithmetic.",
+        "Empty, invalid, deeply nested and huge numeric inputs satisfy bound/refusal statements.",
+        "No resource failure is reclassified as invalid syntax; traversal/encoding/destruction exclusions are named until independently qualified."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/ParseResources.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-027.json"
+    },
+    {
+      "id": "VJ-028",
+      "title": "Implement duplicate-key and full profile validation",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-020",
+        "VJ-023",
+        "VJ-006",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J11"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Profiles.lean",
+        "lean/VerifiedJson/Proofs/Profiles.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Implement the selected decoded-key duplicate policy and bounded AST profile traversal.",
+      "acceptance_criteria": [
+        "Escape-equivalent keys are compared as decoded wire/scalar units according to the frozen profile.",
+        "Allow/reject policy outcomes are proved; normalization/case-folding is absent.",
+        "ProfileRejected and LimitExceeded are distinguished and traversal budgets are explicit."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Profiles.lean",
+        "lean/VerifiedJson/Proofs/Profiles.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-028.json"
+    },
+    {
+      "id": "VJ-029",
+      "title": "Implement serializer and valid-output theorem",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-019",
+        "VJ-021",
+        "VJ-028",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J09"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Serializer.lean",
+        "lean/VerifiedJson/Proofs/SerializeValid.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Serialize independently WellFormed ASTs without restricting the domain to prior parse output.",
+      "acceptance_criteria": [
+        "Every successful output meets document/profile grammar with explicit output/work budgets.",
+        "Escaped units, duplicate sequence and original number-token policy are preserved.",
+        "Output exhaustion returns a limit outcome; success never contains a truncated document."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Serializer.lean",
+        "lean/VerifiedJson/Proofs/SerializeValid.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-029.json"
+    },
+    {
+      "id": "VJ-030",
+      "title": "Prove semantic serialization round trip",
+      "ticket_class": "proof-only",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-025",
+        "VJ-027",
+        "VJ-029",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J10"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/SerializeRoundtrip.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/"
+      ],
+      "goal": "Compose serializer/parser properties with sufficient parsing budgets derived from generated output.",
+      "acceptance_criteria": [
+        "Independent WellFormed AST is the input predicate and semantic equality preserves members/units/tokens.",
+        "Escape expansion and nested-depth bounds yield the documented parsing budget.",
+        "Byte-for-byte reconstruction is not claimed without source spans/bytes; parsing-success premises are excluded."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/SerializeRoundtrip.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-030.json"
+    },
+    {
+      "id": "VJ-031",
+      "title": "Complete neutral codec and preservation theorem",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-007",
+        "VJ-014",
+        "VJ-028",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J17"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/Protocol.lean",
+        "lean/VerifiedJson/Proofs/Protocol.lean",
+        "tests/transport/full/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Protocol.lean"
+      ],
+      "goal": "Extend the codec to every AST/outcome variant and prove bounded decoding and round trips.",
+      "acceptance_criteria": [
+        "Lone units, duplicate sequences, exact tokens and exact binary bit fields survive transport.",
+        "Truncated/oversized/deep frames fail in the declared transport category.",
+        "Comparator/decoder work and native deep-result boundary fixtures are included; no Rust String/map narrowing occurs."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/Protocol.lean",
+        "lean/VerifiedJson/Proofs/Protocol.lean",
+        "tests/transport/full/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-031.json"
+    },
+    {
+      "id": "VJ-032",
+      "title": "Bind public oracle entry points to reviewed claims",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-024",
+        "VJ-025",
+        "VJ-027",
+        "VJ-028",
+        "VJ-030",
+        "VJ-031",
+        "VJ-015",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J16"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/OracleApi.lean",
+        "lean/VerifiedJson/Proofs/OracleApi.lean",
+        "docs/API-BINDINGS.md"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Claims.lean"
+      ],
+      "goal": "Implement and prove one exported oracle dispatch layer while documenting concrete transport/compiler assumptions.",
+      "acceptance_criteria": [
+        "Every exported operation maps to frozen parser/profile/serializer roots and exact result predicates.",
+        "No export silently chooses a weaker profile or mode; limits and infrastructure failures retain their meanings.",
+        "Compiled artifact/protocol bindings are explicit evidence, not a machine-code proof inferred from Lean source."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/OracleApi.lean",
+        "lean/VerifiedJson/Proofs/OracleApi.lean",
+        "docs/API-BINDINGS.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-032.json"
+    },
+    {
+      "id": "VJ-033",
+      "title": "Classify public corpus and wire-profile regressions",
+      "ticket_class": "tests-docs",
+      "phase": "P3",
+      "prerequisites": [
+        "VJ-024",
+        "VJ-025",
+        "VJ-028",
+        "VJ-031",
+        "VJ-032"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "tests/corpus/",
+        "tests/regressions/wire/",
+        "docs/CORPUS.md"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "docs/claim-roots.json"
+      ],
+      "goal": "Pin licensed corpus sources and add bounded fixtures for policy-sensitive cases.",
+      "acceptance_criteria": [
+        "JSONTestSuite accepted/rejected/implementation-dependent labels are preserved.",
+        "Every fixture has profile/limit identity and expected category; surrogates/duplicate escaped keys/trailing bytes are represented.",
+        "Corpus observations complement proofs and do not substitute for missing roots; copied fixture notices are retained."
+      ],
+      "human_review": "Fixture provenance and expected-policy review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "tests/corpus/",
+        "tests/regressions/wire/",
+        "docs/CORPUS.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-033.json"
+    },
+    {
+      "id": "VJ-034",
+      "title": "Admit the minimum FloatLib proof closure",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P4",
+      "prerequisites": [
+        "VJ-002",
+        "VJ-006",
+        "VJ-008"
+      ],
+      "capstones": [
+        "J12",
+        "J13"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Numbers/Provider.lean",
+        "compatibility/float-provider.json",
+        "docs/FLOAT-ADMISSION.md"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Inspect, build and replay one exact minimal FloatLib module closure, with patches only if reviewed.",
+      "acceptance_criteria": [
+        "Arbitrary decimal parse coverage is inspected separately from finite-format round-trip claims.",
+        "Exact source/patch/license/import/axiom/native closure and stable/RC compatibility are recorded.",
+        "Effective toolchain remains selected; statement/definition-altering dependency changes require semantic review."
+      ],
+      "human_review": "Numerical semantic review and dependency admission; no automatic upstream posting",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Numbers/Provider.lean",
+        "compatibility/float-provider.json",
+        "docs/FLOAT-ADMISSION.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-034.json"
+    },
+    {
+      "id": "VJ-035",
+      "title": "Implement exact-token decimal bridge with zero/range policy",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P4",
+      "prerequisites": [
+        "VJ-021",
+        "VJ-034",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J12"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Numbers/DecimalBridge.lean",
+        "lean/VerifiedJson/Proofs/DecimalBridge.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Numbers/Provider.lean"
+      ],
+      "goal": "Connect admitted JSON tokens to exact signed decimals and the one destination rounding operation.",
+      "acceptance_criteria": [
+        "No intermediate fixed-decimal rounding is introduced.",
+        "Sign of zero, supported exponent/digit budgets and range outcomes match the frozen profile.",
+        "Local interpretation/progress proofs hold for arbitrary supported tokens, including extreme-exponent refusal cases."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Numbers/DecimalBridge.lean",
+        "lean/VerifiedJson/Proofs/DecimalBridge.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-035.json"
+    },
+    {
+      "id": "VJ-036",
+      "title": "Prove arbitrary-decimal binary64 rounding capstone",
+      "ticket_class": "proof-only",
+      "phase": "P4",
+      "prerequisites": [
+        "VJ-035",
+        "VJ-034",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J12"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Proofs/Binary64Round.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Numbers/"
+      ],
+      "goal": "Compose provider and token interpretation proofs into correctly rounded binary64 conversion.",
+      "acceptance_criteria": [
+        "Nearest-even ties, subnormals, signed zero, underflow and overflow satisfy explicit bit/status statements.",
+        "The theorem quantifies over arbitrary supported tokens rather than only formatted finite values.",
+        "Required native bit/bridge assumptions are named; missing provider coverage remains a blocker."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Proofs/Binary64Round.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Proof bodies/helpers only within sealed selectors; all pre-existing target types, definitions, bindings, implementation bodies and instances are immutable. New helper declarations need reviewed allowed policy.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-036.json"
+    },
+    {
+      "id": "VJ-037",
+      "title": "Implement finite binary64 JSON serialization contract",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P4",
+      "prerequisites": [
+        "VJ-029",
+        "VJ-036",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J13"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Numbers/FloatSerializer.lean",
+        "lean/VerifiedJson/Proofs/FloatSerializer.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Numbers/Provider.lean"
+      ],
+      "goal": "Produce valid chosen decimal text for finite values and prove its stated parse round trip.",
+      "acceptance_criteria": [
+        "Signed zero and exact finite bit patterns round-trip under the reviewed parse profile.",
+        "Nonfinite inputs and output/work exhaustion have explicit outcomes.",
+        "Shortest formatting/JCS conformance is excluded unless separately reviewed and proved."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Numbers/FloatSerializer.lean",
+        "lean/VerifiedJson/Proofs/FloatSerializer.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-037.json"
+    },
+    {
+      "id": "VJ-038",
+      "title": "Complete feature-isolated Rust adapter profile matrix",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P5",
+      "prerequisites": [
+        "VJ-016",
+        "VJ-031",
+        "VJ-032"
+      ],
+      "capstones": [
+        "J14"
+      ],
+      "allowed_files": [
+        "crates/json-adapter-serde/",
+        "compatibility/serde-profiles/",
+        "tests/adapters/full/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Comparison.lean"
+      ],
+      "goal": "Qualify explicit default/f64/exact/raw/order API cells without promising generic Serde verification.",
+      "acceptance_criteria": [
+        "Effective Cargo feature unification is measured and incompatible cells are isolated.",
+        "Custom visitor/RawValue/token observation paths are checked for duplicate/member/number preservation; lossy domains are excluded or explicitly projected.",
+        "Default accuracy differences, declared round-trip guarantees, profile differences and genuine defects remain distinct.",
+        "Only qualified cells are enabled: actual binary64 oracle comparisons additionally require VJ-036 and VJ-037; unavailable cells remain Unsupported, not passed.",
+        "A binary64 cell additionally requires accepted VJ-055 public-API/compiled-oracle binding; proved number modules alone cannot enable it."
+      ],
+      "human_review": "Adapter contract and numerical-classification review; tested/native boundary explicitly retained",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "crates/json-adapter-serde/",
+        "compatibility/serde-profiles/",
+        "tests/adapters/full/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-038.json"
+    },
+    {
+      "id": "VJ-039",
+      "title": "Implement profiled differential runner and classifier with seeded tests",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P5",
+      "prerequisites": [
+        "VJ-033",
+        "VJ-038"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "crates/json-diff/src/run.rs",
+        "crates/json-diff/src/classify.rs",
+        "tests/generators/",
+        "tests/classifier/",
+        "tests/mutants/candidate/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Comparison.lean"
+      ],
+      "goal": "Wire accepted adapters into a bounded local runner and contract-driven classifier, with synthetic generator/mutant fixtures.",
+      "acceptance_criteria": [
+        "Grammar/semantic defects and allowed profile/accuracy/range differences have separate expected classes.",
+        "Seeded candidate defects are detected; permitted disagreements do not become upstream bug claims.",
+        "Every run records pinned inputs/build/profile/limit identities and no private data.",
+        "Numeric-only cells without admitted provider evidence remain Unsupported; synthetic classifier fixtures are not claimed as real conversion evidence."
+      ],
+      "human_review": "Classification semantics and native tool boundary review; no all-input candidate proof",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "crates/json-diff/src/run.rs",
+        "crates/json-diff/src/classify.rs",
+        "tests/generators/",
+        "tests/classifier/",
+        "tests/mutants/candidate/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-039.json"
+    },
+    {
+      "id": "VJ-040",
+      "title": "Implement bounded discrepancy-preserving shrinker",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P5",
+      "prerequisites": [
+        "VJ-039"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "crates/json-diff/src/shrink.rs",
+        "crates/json-diff/src/cli.rs",
+        "tests/shrinker/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/Comparison.lean"
+      ],
+      "goal": "Add AST and byte shrinking for one pinned failure class; avoid proving unimplemented global minimality.",
+      "acceptance_criteria": [
+        "Every retained reduction reproduces the same classified discrepancy under fixed builds.",
+        "Cancellation, reduction budget and candidate crashes preserve the original evidence and stop safely.",
+        "A small irreducible test is called minimized, not globally minimal, unless that stronger property is established."
+      ],
+      "human_review": "Infrastructure/counterexample review; no automatic upstream disclosure",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "crates/json-diff/src/shrink.rs",
+        "crates/json-diff/src/cli.rs",
+        "tests/shrinker/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-040.json"
+    },
+    {
+      "id": "VJ-041",
+      "title": "Prepare regression and local repair/report drafts",
+      "ticket_class": "tests-docs",
+      "phase": "P5",
+      "prerequisites": [
+        "VJ-040",
+        "VJ-038"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "tests/repair-drafts/",
+        "docs/UPSTREAM-REPRODUCER.md",
+        "docs/REPAIR-BOUNDARY.md"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "compatibility/"
+      ],
+      "goal": "Create synthetic maintainer-facing issue/patch templates and repair validation examples.",
+      "acceptance_criteria": [
+        "Draft includes minimized bytes, expected/observed outcomes, exact versions/features, reproducer and regression.",
+        "A repair cannot change frozen contract, remove assertions, or auto-replace deployed binaries.",
+        "Synthetic replay and target contribution checks are documented; external posting and real security disclosure are separate actions."
+      ],
+      "human_review": "Expected behavior and disclosure/repair scope review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "tests/repair-drafts/",
+        "docs/UPSTREAM-REPRODUCER.md",
+        "docs/REPAIR-BOUNDARY.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-041.json"
+    },
+    {
+      "id": "VJ-042",
+      "title": "Add adversarial mutations for proof and release gates",
+      "ticket_class": "tests-docs",
+      "phase": "P6",
+      "prerequisites": [
+        "VJ-004",
+        "VJ-008",
+        "VJ-032"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "tests/mutants/proof-gates/",
+        "tests/mutants/release/"
+      ],
+      "read_only_contract_paths": [
+        "docs/LEAN-GATES.md",
+        "lean/VerifiedJson/Spec/",
+        "tools/verify-ticket",
+        "tools/verification/**"
+      ],
+      "goal": "Exercise existing gates against intentionally invalid candidate artifacts.",
+      "acceptance_criteria": [
+        "Mutants include false/missing roots, custom axioms, changed definitions, stale artifacts, weak hypotheses and skipped checking.",
+        "Each mutant fails the intended gate; checker-unavailable and failed-write cases are infrastructure rather than proof rejection.",
+        "Unproved extern/implemented_by substitution and forged coverage/package manifests cannot obtain a stronger claim."
+      ],
+      "human_review": "Independent gate-audit review of detection assertions",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "tests/mutants/proof-gates/",
+        "tests/mutants/release/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-042.json"
+    },
+    {
+      "id": "VJ-043",
+      "title": "Rehearse one Linux source/CLI alpha package",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P6",
+      "prerequisites": [
+        "VJ-032",
+        "VJ-033",
+        "VJ-038",
+        "VJ-040",
+        "VJ-041",
+        "VJ-042"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "docs/RELEASE-REHEARSAL.md",
+        "docs/ASSURANCE.md",
+        "release/manifest-template.json",
+        "tools/package-check/"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "docs/claim-roots.json"
+      ],
+      "goal": "Prepare an installable source/oracle/CLI candidate and inspect the packaged bytes; no release.",
+      "acceptance_criteria": [
+        "Fresh proof/replay and exact native/platform closure evidence accompanies the archive/package.",
+        "Linux x86-64 install smoke path and user-selected pinned oracle are documented; macOS support is not assumed.",
+        "License/secret/artifact inspection and release-blocking finding disposition complete; exact-token-only alpha explicitly disables binary64 claims if that milestone is unready.",
+        "Binary64-enabled alpha additionally requires VJ-034 through VJ-037; unbuilt optional claims cannot appear enabled in the package manifest.",
+        "Every enabled binary64 release claim additionally requires VJ-055 API/codec/artifact binding evidence."
+      ],
+      "human_review": "Release owner plus independent assurance and package review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/RELEASE-REHEARSAL.md",
+        "docs/ASSURANCE.md",
+        "release/manifest-template.json",
+        "tools/package-check/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-043.json"
+    },
+    {
+      "id": "VJ-044",
+      "title": "Implement pure approved-result cache model and theorem",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P7",
+      "prerequisites": [
+        "VJ-006",
+        "VJ-031",
+        "VJ-032",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J15"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/CheckedCacheModel.lean",
+        "lean/VerifiedJson/Proofs/CheckedCacheModel.lean"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/"
+      ],
+      "goal": "Model exact identity, immutable approved outcomes, quotas and safe miss/cancellation behavior.",
+      "acceptance_criteria": [
+        "A hit returns a bound approved result or requires comparison before candidate output release.",
+        "Rebuild/profile/protocol/result identity changes cannot reuse stale approval; exact-key behavior is specified independently of hash indexing.",
+        "Timeout/unsupported/infrastructure/mismatch entries are never promoted into semantic approval."
+      ],
+      "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/CheckedCacheModel.lean",
+        "lean/VerifiedJson/Proofs/CheckedCacheModel.lean"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-044.json"
+    },
+    {
+      "id": "VJ-045",
+      "title": "Prepare bounded checked-runtime cache implementation pilot",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P7",
+      "prerequisites": [
+        "VJ-044",
+        "VJ-038",
+        "VJ-043"
+      ],
+      "capstones": [
+        "J15",
+        "J16"
+      ],
+      "allowed_files": [
+        "crates/json-checked/",
+        "tests/checked-runtime/",
+        "docs/CHECKED-RUNTIME.md"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/CheckedCacheModel.lean"
+      ],
+      "goal": "Implement process-local memory-only cache and explicit checked mode with a tested/native boundary.",
+      "acceptance_criteria": [
+        "Fault injection covers candidate-changing-output, forged/colliding index, worker failure, single-flight cancellation and full cache.",
+        "No oracle-unavailable fail-open switch or unbounded pending approval exists; no application request waits for patch/network reporting.",
+        "Deep result ownership/destruction, exact build identities and candidate isolation/trust assumptions are reviewed."
+      ],
+      "human_review": "Independent runtime/native boundary audit; pure model proof is not asserted as Rust refinement",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "crates/json-checked/",
+        "tests/checked-runtime/",
+        "docs/CHECKED-RUNTIME.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-045.json"
+    },
+    {
+      "id": "VJ-046",
+      "title": "Benchmark unique-input checked workloads and limits",
+      "ticket_class": "tests-docs",
+      "phase": "P7",
+      "prerequisites": [
+        "VJ-045"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "benchmarks/checked/",
+        "docs/PILOT-BENCHMARKS.md"
+      ],
+      "read_only_contract_paths": [
+        "docs/CHECKED-RUNTIME.md",
+        "compatibility/"
+      ],
+      "goal": "Measure complete cold/warm, repeated/all-unique and adversarial workload costs.",
+      "acceptance_criteria": [
+        "Input/build identities and latency distribution, RSS/allocation, cache quotas, hit rates and timeouts are recorded.",
+        "Candidate-only, oracle-only, checked miss/hit and rerun-plus-comparison modes are separated.",
+        "Thresholds are selected from measured pilot evidence; no production support or shape-certification claim follows from repeats."
+      ],
+      "human_review": "Performance/security owner decides acceptable pilot limits",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "benchmarks/checked/",
+        "docs/PILOT-BENCHMARKS.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-046.json"
+    },
+    {
+      "id": "VJ-047",
+      "title": "Prepare offline feedback and approved reporter qualification",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P8",
+      "prerequisites": [
+        "VJ-041",
+        "VJ-045",
+        "VJ-046"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "docs/FEEDBACK.md",
+        "tools/report-drafts/",
+        "tests/reporting/"
+      ],
+      "read_only_contract_paths": [
+        "docs/REPAIR-BOUNDARY.md",
+        "docs/ASSURANCE.md"
+      ],
+      "goal": "Prepare separate local queue/export tooling and a qualification plan before any network reporting.",
+      "acceptance_criteria": [
+        "Library has no reporter credentials; raw production data stays local and minimized is not synonymous with anonymous.",
+        "Allowlist, bounded bodies, deduplication, sensitive/security triage and uncertain-post reconciliation are tested using fakes.",
+        "External issues/PRs require explicit operator posting authority and target policy; no code download/automatic production repair occurs."
+      ],
+      "human_review": "Privacy/disclosure and reporter-authority review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/FEEDBACK.md",
+        "tools/report-drafts/",
+        "tests/reporting/"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-047.json"
+    },
+    {
+      "id": "VJ-048",
+      "title": "Qualify one safe-Rust fast path via extraction and refinement",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P9",
+      "prerequisites": [
+        "VJ-032",
+        "VJ-038",
+        "VJ-045",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J16"
+      ],
+      "allowed_files": [
+        "crates/json-fastpath/",
+        "lean/VerifiedJson/Proofs/RustFastpath.lean",
+        "compatibility/rust-extraction.json"
+      ],
+      "read_only_contract_paths": [
+        "lean/VerifiedJson/Spec/",
+        "lean/VerifiedJson/Impl/OracleApi.lean"
+      ],
+      "goal": "Test extraction feasibility and prove one tiny named domain such as a fixed literal with bounded whitespace.",
+      "acceptance_criteria": [
+        "Supported Rust subset/extractor/source/compiler identities are exact and its assumptions recorded.",
+        "An all-input theorem covers the named predicate; unsupported inputs demonstrably fallback.",
+        "Cached observations and seeded-test success cannot replace refinement; broadened domains require new packets."
+      ],
+      "human_review": "Extraction/native trust review and theorem-domain semantic review",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "crates/json-fastpath/",
+        "lean/VerifiedJson/Proofs/RustFastpath.lean",
+        "compatibility/rust-extraction.json"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-048.json"
+    },
+    {
+      "id": "VJ-049",
+      "title": "Prepare official Lean upgrade and stable qualification candidate",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P10",
+      "prerequisites": [
+        "VJ-002",
+        "VJ-042",
+        "VJ-043"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "docs/TOOLCHAIN-MAINTENANCE.md",
+        ".github/workflows/lean-upgrade.yml",
+        ".github/workflows/qualify-stable.yml"
+      ],
+      "read_only_contract_paths": [
+        "docs/LEAN-GATES.md",
+        "docs/claim-roots.json"
+      ],
+      "goal": "Reuse manual/scheduled GitHub Actions to prepare exact-pin upgrade candidates without deploying them.",
+      "acceptance_criteria": [
+        "Official RC/stable discovery and best-effort schedule behavior are explicit; no moving selector executes proofs.",
+        "Final stable bytes get new build/replay/semantic and package qualification even if RC source appears unchanged.",
+        "Unavailable checkers/dependency drift become owned blockers; no semantic repair is smuggled through a version bump."
+      ],
+      "human_review": "Workflow/semantic-drift review; hosted enablement remains a separate phase",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/TOOLCHAIN-MAINTENANCE.md",
+        ".github/workflows/lean-upgrade.yml",
+        ".github/workflows/qualify-stable.yml"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-049.json"
+    },
+    {
+      "id": "VJ-050",
+      "title": "Freeze downstream compatibility and stable release checklist",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P10",
+      "prerequisites": [
+        "VJ-043",
+        "VJ-049"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "docs/STABLE-RELEASE.md",
+        "docs/COMPATIBILITY.md",
+        "release/stable-manifest-template.json"
+      ],
+      "read_only_contract_paths": [
+        "docs/ASSURANCE.md",
+        "docs/claim-roots.json",
+        "compatibility/"
+      ],
+      "goal": "Prepare independent versioning, first downstream smoke matrix and manual promotion requirements.",
+      "acceptance_criteria": [
+        "Each claimed API/profile/platform has evidence or an explicit exclusion; binary64 and runtime claims cannot borrow core evidence.",
+        "Packaged source/bytes, dependency/feature closure and release identity are pinned; partial publication reconciliation is planned.",
+        "Only authorized qualified artifacts may promote; optional P7\u2013P9 products are not prerequisites for a correctly scoped core/comparison stable channel.",
+        "If checked-runtime support is claimed, VJ-044 through VJ-046 are additional required evidence; optional runtime does not block the core/comparison stable channel."
+      ],
+      "human_review": "Release owner and independent contract/native/package assurance approval",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/STABLE-RELEASE.md",
+        "docs/COMPATIBILITY.md",
+        "release/stable-manifest-template.json"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G02",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-050.json"
+    },
+    {
+      "id": "VJ-051",
+      "title": "Qualify a minimum current-Lean comparator and replay envelope",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-004",
+        "VJ-054"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "docs/VERIFIER-ENVELOPE.md",
+        "verification/envelopes/**"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Inspect and qualify selected existing comparator/export/replay tools for the initial packet kinds without using an unbuilt project wrapper to certify itself.",
+      "acceptance_criteria": [
+        "Freeze exact comparator/exporter/checker/compiler/dependency identities and minimum module footprint on the chosen Lean lane.",
+        "Valid proofs and actual invalid/axiom/changed-target cases are distinguished by the real tools; unsupported layers remain infrastructure failures.",
+        "Known worker-descendant/export race and primitive/string handling limits are either repaired and tested or block qualification.",
+        "Manual independent review records scope; compatibility of each later new declaration/runtime domain is requalified."
+      ],
+      "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "docs/VERIFIER-ENVELOPE.md",
+        "verification/envelopes/**"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-051.json"
+    },
+    {
+      "id": "VJ-052",
+      "title": "Implement the bounded submission supervisor adapter",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-051",
+        "VJ-008"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "tools/verify-ticket",
+        "tools/verification/**",
+        "tests/verification/**"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Adapt qualified existing comparator interfaces under a small trusted supervisor; no new theorem-comparison engine or claim service.",
+      "acceptance_criteria": [
+        "Frozen source and policy are reconstructed independently; candidate PR paths map to a separate generated submission workspace.",
+        "Untrusted elaboration has no credentials/network/shared writable cache; all descendants terminate before outputs are sealed.",
+        "A separate verifier inspects bounded sealed artifacts and emits source-bound stage evidence with PASS/REJECT/INFRA.",
+        "Local positive/negative/fault tests and independent code review establish the supervisor boundary; no formal self-certification is asserted."
+      ],
+      "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "tools/verify-ticket",
+        "tools/verification/**",
+        "tests/verification/**"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-052.json"
+    },
+    {
+      "id": "VJ-053",
+      "title": "Qualify the operational mathematical submission gate",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P1",
+      "prerequisites": [
+        "VJ-052",
+        "VJ-051"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "tests/verification/canaries/**",
+        "verification/envelopes/**",
+        "docs/VERIFIER-QUALIFICATION.md"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Run the real end-to-end gate on positive/negative submissions before opening the first mathematical tickets.",
+      "acceptance_criteria": [
+        "Actual valid proof/implementation examples pass and direct/hidden placeholders, extra axioms, target drift and disabled kernel checks cannot pass.",
+        "Race/sealing, forged/stale artifacts, missing checker, malformed protocol, unsupported exports and failed writes produce the declared safe verdicts.",
+        "Publish an exact qualified validator.argv and envelope identity only for supported packet kinds and pins; no production theorem exists by inference.",
+        "Bootstrap uses manual review plus real empirical checks; it does not depend on its own mathematical PASS."
+      ],
+      "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "tests/verification/canaries/**",
+        "verification/envelopes/**",
+        "docs/VERIFIER-QUALIFICATION.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-053.json"
+    },
+    {
+      "id": "VJ-054",
+      "title": "Prepare the Lean and Rust workspace skeleton",
+      "ticket_class": "maintainer-contract-release-infrastructure",
+      "phase": "P0",
+      "prerequisites": [
+        "VJ-001",
+        "VJ-002"
+      ],
+      "capstones": [],
+      "allowed_files": [
+        "lean/lakefile.toml",
+        "lean/lean-toolchain",
+        "lean/lake-manifest.json",
+        "lean/VerifiedJson.lean",
+        "Cargo.toml",
+        "crates/json-contract/Cargo.toml",
+        "crates/json-contract/src/lib.rs",
+        "docs/BUILD.md"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Prepare a source-only buildable package skeleton with exact current toolchain identities and no parser/proof claims.",
+      "acceptance_criteria": [
+        "Lean package/root targets and Rust workspace members/build boundaries are declared explicitly.",
+        "A minimal fresh source-only build smoke test runs under the selected stable/RC pins without placeholder or parser correctness claims.",
+        "No hidden build download, reporter, publication action or private path is introduced; setup ownership and dependencies are explicit."
+      ],
+      "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/lakefile.toml",
+        "lean/lean-toolchain",
+        "lean/lake-manifest.json",
+        "lean/VerifiedJson.lean",
+        "Cargo.toml",
+        "crates/json-contract/Cargo.toml",
+        "crates/json-contract/src/lib.rs",
+        "docs/BUILD.md"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-054.json"
+    },
+    {
+      "id": "VJ-055",
+      "title": "Bind binary64 operations into the public oracle and transport",
+      "ticket_class": "implementation-with-proofs",
+      "phase": "P4",
+      "prerequisites": [
+        "VJ-036",
+        "VJ-037",
+        "VJ-032",
+        "VJ-031",
+        "VJ-053",
+        "VJ-054"
+      ],
+      "capstones": [
+        "J12",
+        "J13",
+        "J16",
+        "J17"
+      ],
+      "allowed_files": [
+        "lean/VerifiedJson/Impl/OracleApi.lean",
+        "lean/VerifiedJson/Proofs/OracleApi.lean",
+        "lean/VerifiedJson/Proofs/NumericTransport.lean",
+        "tests/numbers/oracle/**",
+        "compatibility/numeric-api.json"
+      ],
+      "read_only_contract_paths": [],
+      "goal": "Connect admitted numerical operations to the exact exported oracle API and codec, preserving the separately reviewed numeric profile contract.",
+      "acceptance_criteria": [
+        "Freeze the approved numeric API/profile revision and explicit dispatcher implementation holes before mathematical work.",
+        "Recompose J16 and the numeric J17 branch to the actual J12/J13 operations; compiled closure contains the qualified provider and no unchecked substitute.",
+        "Signed-zero, ties, range/underflow and disabled-profile cases survive the exported operation and neutral codec on the built oracle.",
+        "Numeric cells and release claims stay disabled until this API/artifact binding evidence is accepted."
+      ],
+      "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+      "status": "candidate-unfrozen",
+      "claim_ready": false,
+      "frozen_target_pin": null,
+      "packet_revision": null,
+      "packet_digest": null,
+      "contract_pin": null,
+      "toolchain_closure_pin": null,
+      "declaration_bindings": [],
+      "meaning_bearing_definition_bindings": [],
+      "input_output_bindings": [],
+      "proof_body_selectors": [],
+      "immutable_input_artifacts": [],
+      "output_artifacts": [
+        "lean/VerifiedJson/Impl/OracleApi.lean",
+        "lean/VerifiedJson/Proofs/OracleApi.lean",
+        "lean/VerifiedJson/Proofs/NumericTransport.lean",
+        "tests/numbers/oracle/**",
+        "compatibility/numeric-api.json"
+      ],
+      "claim_hours": 6,
+      "implementation_estimate_hours": null,
+      "github_issue_url": null,
+      "github_issue_node_id": null,
+      "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+      "required_gates": [
+        "G00",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09"
+      ],
+      "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+      "validator": {
+        "kind": "unqualified-template",
+        "status": "NOT_READY",
+        "argv": null,
+        "identity": null
+      },
+      "template_path": "work-packets/VJ-055.json"
+    }
+  ],
+  "coordination_board_states": [
+    "Draft",
+    "Blocked",
+    "Ready",
+    "Claimed",
+    "In Progress",
+    "In Review",
+    "Done"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "VJ-044",
+  "title": "Implement pure approved-result cache model and theorem",
+  "ticket_class": "implementation-with-proofs",
+  "phase": "P7",
+  "prerequisites": [
+    "VJ-006",
+    "VJ-031",
+    "VJ-032",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J15"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Impl/CheckedCacheModel.lean",
+    "lean/VerifiedJson/Proofs/CheckedCacheModel.lean"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/"
+  ],
+  "goal": "Model exact identity, immutable approved outcomes, quotas and safe miss/cancellation behavior.",
+  "acceptance_criteria": [
+    "A hit returns a bound approved result or requires comparison before candidate output release.",
+    "Rebuild/profile/protocol/result identity changes cannot reuse stale approval; exact-key behavior is specified independently of hash indexing.",
+    "Timeout/unsupported/infrastructure/mismatch entries are never promoted into semantic approval."
+  ],
+  "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Impl/CheckedCacheModel.lean",
+    "lean/VerifiedJson/Proofs/CheckedCacheModel.lean"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-044.json"
+}

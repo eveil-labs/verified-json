@@ -1,0 +1,17 @@
+Verified JSON
+Copyright 2026 Eveil Labs contributors
+
+This local candidate contains newly authored Lean and Rust implementation source
+and public generic planning/contribution documents. The Apache-2.0 project license was selected by the
+operator for this public candidate.
+
+No existing JSON implementation or private governed-corpus implementation is
+vendored. Runtime dependencies retain their own licenses. Exact dependency
+versions and source identities are recorded in Cargo.lock and toolchain manifests.
+FloatLib is not imported in the initial exact-token core.
+
+The primitive-name list in tools/verification/bootstrap_replay.py follows
+leanprover/comparator at ca04cfc72b550331658ec314bf47685281bfd4bf,
+Main.lean, under Apache-2.0. Copyright (c) 2025 Lean FRO, LLC;
+author Henrik Böving. The replay adapter is newly authored infrastructure;
+it does not vendor the comparator implementation.

@@ -1,0 +1,74 @@
+{
+  "id": "VJ-048",
+  "title": "Qualify one safe-Rust fast path via extraction and refinement",
+  "ticket_class": "implementation-with-proofs",
+  "phase": "P9",
+  "prerequisites": [
+    "VJ-032",
+    "VJ-038",
+    "VJ-045",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J16"
+  ],
+  "allowed_files": [
+    "crates/json-fastpath/",
+    "lean/VerifiedJson/Proofs/RustFastpath.lean",
+    "compatibility/rust-extraction.json"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "lean/VerifiedJson/Impl/OracleApi.lean"
+  ],
+  "goal": "Test extraction feasibility and prove one tiny named domain such as a fixed literal with bounded whitespace.",
+  "acceptance_criteria": [
+    "Supported Rust subset/extractor/source/compiler identities are exact and its assumptions recorded.",
+    "An all-input theorem covers the named predicate; unsupported inputs demonstrably fallback.",
+    "Cached observations and seeded-test success cannot replace refinement; broadened domains require new packets."
+  ],
+  "human_review": "Extraction/native trust review and theorem-domain semantic review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "crates/json-fastpath/",
+    "lean/VerifiedJson/Proofs/RustFastpath.lean",
+    "compatibility/rust-extraction.json"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-048.json"
+}

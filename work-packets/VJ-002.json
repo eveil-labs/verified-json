@@ -1,0 +1,64 @@
+{
+  "id": "VJ-002",
+  "title": "Freeze stable and development Lean lane candidates",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P0",
+  "prerequisites": [
+    "VJ-001"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "lean-toolchain",
+    "lake-manifest.json",
+    "docs/TOOLCHAINS.md",
+    "compatibility/toolchains.json"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Qualify exact current stable and RC/dependency candidates without changing the governed corpus.",
+  "acceptance_criteria": [
+    "Official release identities and artifact hashes are recorded; each execution pin is immutable.",
+    "Effective compiler after dependency resolution equals the selected lane; caches are isolated by complete closure.",
+    "If no newer RC exists, stable development fallback is explicit; failed checker/dependency compatibility remains an infrastructure blocker."
+  ],
+  "human_review": "Toolchain/dependency admission review; no automatic downgrade",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean-toolchain",
+    "lake-manifest.json",
+    "docs/TOOLCHAINS.md",
+    "compatibility/toolchains.json"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-002.json"
+}

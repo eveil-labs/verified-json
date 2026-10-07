@@ -1,0 +1,68 @@
+{
+  "id": "VJ-016",
+  "title": "Prepare one isolated serde_json smoke adapter",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P2",
+  "prerequisites": [
+    "VJ-002",
+    "VJ-007",
+    "VJ-015"
+  ],
+  "capstones": [
+    "J14"
+  ],
+  "allowed_files": [
+    "crates/json-adapter-serde/",
+    "compatibility/serde-smoke.json",
+    "tests/adapters/smoke/"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/Comparison.lean"
+  ],
+  "goal": "Build one exact Rust API/feature cell for a reproducible synthetic discrepancy.",
+  "acceptance_criteria": [
+    "Target source/checksum, lock, Rust target and effective feature set are observed, not inferred from requested features.",
+    "Smoke scope identifies where Value/visitor conversion loses distinctions; it never claims complete lossless equivalence.",
+    "A deliberately seeded mismatch is reproducible with pinned outcomes and input; no upstream bug is fabricated."
+  ],
+  "human_review": "Adapter/numerical policy review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "crates/json-adapter-serde/",
+    "compatibility/serde-smoke.json",
+    "tests/adapters/smoke/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-016.json"
+}

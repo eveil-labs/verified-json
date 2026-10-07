@@ -1,0 +1,64 @@
+{
+  "id": "VJ-052",
+  "title": "Implement the bounded submission supervisor adapter",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P1",
+  "prerequisites": [
+    "VJ-051",
+    "VJ-008"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "tools/verify-ticket",
+    "tools/verification/**",
+    "tests/verification/**"
+  ],
+  "read_only_contract_paths": [],
+  "goal": "Adapt qualified existing comparator interfaces under a small trusted supervisor; no new theorem-comparison engine or claim service.",
+  "acceptance_criteria": [
+    "Frozen source and policy are reconstructed independently; candidate PR paths map to a separate generated submission workspace.",
+    "Untrusted elaboration has no credentials/network/shared writable cache; all descendants terminate before outputs are sealed.",
+    "A separate verifier inspects bounded sealed artifacts and emits source-bound stage evidence with PASS/REJECT/INFRA.",
+    "Local positive/negative/fault tests and independent code review establish the supervisor boundary; no formal self-certification is asserted."
+  ],
+  "human_review": "Independent bootstrap/boundary review and applicable empirical checks; mathematical claims need qualified packet gates",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "tools/verify-ticket",
+    "tools/verification/**",
+    "tests/verification/**"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-052.json"
+}

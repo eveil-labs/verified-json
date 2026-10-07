@@ -1,0 +1,71 @@
+{
+  "id": "VJ-015",
+  "title": "Prepare bounded subprocess oracle transport prototype",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P2",
+  "prerequisites": [
+    "VJ-002",
+    "VJ-007",
+    "VJ-013",
+    "VJ-014"
+  ],
+  "capstones": [
+    "J16",
+    "J17"
+  ],
+  "allowed_files": [
+    "crates/json-oracle/",
+    "docs/ORACLE-TRANSPORT.md",
+    "tests/transport/prototype/"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "lean/VerifiedJson/Impl/ProtocolScalar.lean"
+  ],
+  "goal": "Implement and test one pinned-executable subprocess boundary as explicitly trusted/tested infrastructure.",
+  "acceptance_criteria": [
+    "Separate diagnostics and length-bounded frames survive chunking/truncation tests.",
+    "Missing readiness, timeout and worker death are InfrastructureFailure; partial output cannot approve a result.",
+    "Executable/target/protocol identities are checked and no hidden tool download occurs."
+  ],
+  "human_review": "Independent native transport/termination/resource-boundary review; no Rust proof claim",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "crates/json-oracle/",
+    "docs/ORACLE-TRANSPORT.md",
+    "tests/transport/prototype/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-015.json"
+}

@@ -1,0 +1,78 @@
+{
+  "id": "VJ-032",
+  "title": "Bind public oracle entry points to reviewed claims",
+  "ticket_class": "implementation-with-proofs",
+  "phase": "P3",
+  "prerequisites": [
+    "VJ-024",
+    "VJ-025",
+    "VJ-027",
+    "VJ-028",
+    "VJ-030",
+    "VJ-031",
+    "VJ-015",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J16"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Impl/OracleApi.lean",
+    "lean/VerifiedJson/Proofs/OracleApi.lean",
+    "docs/API-BINDINGS.md"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/",
+    "lean/VerifiedJson/Claims.lean"
+  ],
+  "goal": "Implement and prove one exported oracle dispatch layer while documenting concrete transport/compiler assumptions.",
+  "acceptance_criteria": [
+    "Every exported operation maps to frozen parser/profile/serializer roots and exact result predicates.",
+    "No export silently chooses a weaker profile or mode; limits and infrastructure failures retain their meanings.",
+    "Compiled artifact/protocol bindings are explicit evidence, not a machine-code proof inferred from Lean source."
+  ],
+  "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Impl/OracleApi.lean",
+    "lean/VerifiedJson/Proofs/OracleApi.lean",
+    "docs/API-BINDINGS.md"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-032.json"
+}

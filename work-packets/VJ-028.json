@@ -1,0 +1,71 @@
+{
+  "id": "VJ-028",
+  "title": "Implement duplicate-key and full profile validation",
+  "ticket_class": "implementation-with-proofs",
+  "phase": "P3",
+  "prerequisites": [
+    "VJ-020",
+    "VJ-023",
+    "VJ-006",
+    "VJ-053",
+    "VJ-054"
+  ],
+  "capstones": [
+    "J11"
+  ],
+  "allowed_files": [
+    "lean/VerifiedJson/Impl/Profiles.lean",
+    "lean/VerifiedJson/Proofs/Profiles.lean"
+  ],
+  "read_only_contract_paths": [
+    "lean/VerifiedJson/Spec/"
+  ],
+  "goal": "Implement the selected decoded-key duplicate policy and bounded AST profile traversal.",
+  "acceptance_criteria": [
+    "Escape-equivalent keys are compared as decoded wire/scalar units according to the frozen profile.",
+    "Allow/reject policy outcomes are proved; normalization/case-folding is absent.",
+    "ProfileRejected and LimitExceeded are distinguished and traversal budgets are explicit."
+  ],
+  "human_review": "Independent maintainer review of contract preservation and submitted evidence",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "lean/VerifiedJson/Impl/Profiles.lean",
+    "lean/VerifiedJson/Proofs/Profiles.lean"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only sealed implementation bodies and new scoped proof modules may change; independent spec, public target statements, profiles and checker policy are immutable.",
+  "required_gates": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-028.json"
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "trusted-bootstrap-candidate; not a qualified community envelope",
+  "lean_version": "4.35.0-rc4",
+  "lean_githash": "c29b6dda4f7c20e3eeaa717c4e565663c5cfa364",
+  "platform": "darwin_aarch64",
+  "compiler_archive_sha256": "743f536c58c2580577ef890985b4084e90c6039fce099018d5c0c67c13724218",
+  "compiler_release": "https://github.com/leanprover/lean4/releases/tag/v4.35.0-rc4",
+  "binaries": {
+    "lean": "d1d9c26a539f54fe839d2aa7760bf1ac1dd76a30b26e2c9684bebf2900038fcf",
+    "leanexport": "92104293b343d52046207d46427d6fa42043166dd79282d7c1e2825e61857427",
+    "leanchecker-paranoid": "3dd0d281eb2a38ad2bee03add1bd0718ae026fedeb288a2032d4e442d6dcfaf8",
+    "nanoda_bin": "b5a75a50d07b06a25b3ddb9519144ebdeed8e0f3489222c88ba4049dfe8ce627"
+  },
+  "independent_checker": {
+    "name": "nanoda",
+    "reported_version": "0.4.19",
+    "origin": "bundled official Lean release",
+    "separate_source_revision": "not independently established; qualify before community acceptance"
+  },
+  "source_comparator_primitive_basis": {
+    "repository": "https://github.com/leanprover/comparator",
+    "revision": "ca04cfc72b550331658ec314bf47685281bfd4bf",
+    "file": "Main.lean",
+    "license": "Apache-2.0"
+  },
+  "source_exporter_build": {
+    "repository": "https://github.com/leanprover/lean4export",
+    "revision": "05d43a2bc773b40ecfdebb32294192a5ef756951",
+    "license": "Apache-2.0"
+  },
+  "open_qualification": [
+    "adversarial isolation and process lifetime",
+    "trusted frozen-source/declaration correspondence",
+    "primitive/kernel feature coverage beyond measured roots",
+    "native exported String-literal dependency ordering",
+    "independent-checker pretty-print axiom diagnostics",
+    "independent-checker exact source provenance"
+  ]
+}

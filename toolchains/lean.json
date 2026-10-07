@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "development": {
+    "version": "v4.35.0-rc4",
+    "repository": "https://github.com/leanprover/lean4",
+    "commit": "c29b6dda4f7c20e3eeaa717c4e565663c5cfa364",
+    "platform": "darwin_aarch64",
+    "archive_sha256": "743f536c58c2580577ef890985b4084e90c6039fce099018d5c0c67c13724218",
+    "qualification": "bootstrap-only; untrusted gate not qualified",
+    "archives": {
+      "darwin_aarch64": {
+        "name": "lean-4.35.0-rc4-darwin_aarch64.tar.zst",
+        "sha256": "743f536c58c2580577ef890985b4084e90c6039fce099018d5c0c67c13724218"
+      },
+      "linux": {
+        "name": "lean-4.35.0-rc4-linux.tar.zst",
+        "sha256": "e78e14c54c39a145945833cfcdb219458d650c210847a90dcef8fa8ff05ab51a"
+      },
+      "linux_aarch64": {
+        "name": "lean-4.35.0-rc4-linux_aarch64.tar.zst",
+        "sha256": "ed3e64371cf2f11933811f9eddb3054ced7413123bd498bce4ab206bf76a4fc5"
+      }
+    }
+  },
+  "stable": {
+    "version": "v4.34.1",
+    "commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "qualification": "source/native build and 22 bootstrap observation tests passed; release and independent replay not qualified",
+    "archive_sha256": "65f22a4f047738ec742667b3247e836a86ebf06eabc12655c3dee00637e37866"
+  },
+  "dependencies": [],
+  "floatlib": "not-imported; byte grammar and exact number tokens first"
+}

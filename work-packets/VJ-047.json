@@ -1,0 +1,67 @@
+{
+  "id": "VJ-047",
+  "title": "Prepare offline feedback and approved reporter qualification",
+  "ticket_class": "maintainer-contract-release-infrastructure",
+  "phase": "P8",
+  "prerequisites": [
+    "VJ-041",
+    "VJ-045",
+    "VJ-046"
+  ],
+  "capstones": [],
+  "allowed_files": [
+    "docs/FEEDBACK.md",
+    "tools/report-drafts/",
+    "tests/reporting/"
+  ],
+  "read_only_contract_paths": [
+    "docs/REPAIR-BOUNDARY.md",
+    "docs/ASSURANCE.md"
+  ],
+  "goal": "Prepare separate local queue/export tooling and a qualification plan before any network reporting.",
+  "acceptance_criteria": [
+    "Library has no reporter credentials; raw production data stays local and minimized is not synonymous with anonymous.",
+    "Allowlist, bounded bodies, deduplication, sensitive/security triage and uncertain-post reconciliation are tested using fakes.",
+    "External issues/PRs require explicit operator posting authority and target policy; no code download/automatic production repair occurs."
+  ],
+  "human_review": "Privacy/disclosure and reporter-authority review",
+  "status": "candidate-unfrozen",
+  "claim_ready": false,
+  "frozen_target_pin": null,
+  "packet_revision": null,
+  "packet_digest": null,
+  "contract_pin": null,
+  "toolchain_closure_pin": null,
+  "declaration_bindings": [],
+  "meaning_bearing_definition_bindings": [],
+  "input_output_bindings": [],
+  "proof_body_selectors": [],
+  "immutable_input_artifacts": [],
+  "output_artifacts": [
+    "docs/FEEDBACK.md",
+    "tools/report-drafts/",
+    "tests/reporting/"
+  ],
+  "claim_hours": 6,
+  "implementation_estimate_hours": null,
+  "github_issue_url": null,
+  "github_issue_node_id": null,
+  "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
+  "required_gates": [
+    "G00",
+    "G02",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09"
+  ],
+  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "validator": {
+    "kind": "unqualified-template",
+    "status": "NOT_READY",
+    "argv": null,
+    "identity": null
+  },
+  "template_path": "work-packets/VJ-047.json"
+}

@@ -1,0 +1,12 @@
+name = "verifiedJson"
+version = "0.1.0-rc.1"
+defaultTargets = ["VerifiedJson", "verified-json-oracle"]
+fixedToolchain = true
+moreLeanArgs = ["-DwarningAsError=true"]
+
+[[lean_lib]]
+name = "VerifiedJson"
+
+[[lean_exe]]
+name = "verified-json-oracle"
+root = "Main"

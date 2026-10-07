@@ -1,0 +1,10 @@
+schema_version = 1
+repository_id = "org.eveil.verified-json"
+repository_kind = "public-library"
+visibility = "public"
+capability_requests = ["execution.local"]
+capability_provides = ["library.json-reference"]
+policy_names = ["specification-review-required", "qualified-proof-gate-required"]
+
+# Local build/tests require caller-allocated scratch and explicit toolchain paths;
+# no automatic host task is commissioned by this candidate metadata.
