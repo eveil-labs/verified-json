@@ -91,7 +91,19 @@ def main():
             raise RuntimeError("successful build did not produce required fresh artifacts")
         roots_path = ROOT / "proofs/roots.json"
         if roots_path.is_file():
-            roots = json.loads(roots_path.read_text())["declarations"]
+            root_record = json.loads(roots_path.read_text())
+            roots = list(root_record["declarations"])
+            record["root_scopes"] = {"implementation_helpers": len(roots)}
+            draft_path = ROOT / "proofs/document-spec-roots.json"
+            if draft_path.is_file():
+                draft = json.loads(draft_path.read_text())
+                if set(draft["allowed_axioms"]) != set(root_record["allowed_axioms"]):
+                    raise RuntimeError("draft model cannot widen the axiom basis")
+                roots.extend(draft["declarations"])
+                record["root_scopes"]["draft_contract_witnesses"] = len(draft["declarations"])
+                record["contract_semantic_approval"] = "PENDING"
+            if len(set(roots)) != len(roots):
+                raise RuntimeError("duplicate proof-root declaration")
             if not roots:
                 raise RuntimeError("empty proof-root audit is not meaningful evidence")
             audit = lean / "BootstrapAudit.lean"

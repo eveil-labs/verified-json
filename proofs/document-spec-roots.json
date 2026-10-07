@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "draft contract witnesses; human semantic approval pending",
+  "source_sha256": "ee1c73d10a6ff7daa28867c04c9f8b83821ba0044335742432b34ac7a345103e",
+  "declarations": [
+    "VerifiedJson.DocumentSpec.utf8Scalar_isScalar",
+    "VerifiedJson.DocumentSpec.cent_utf8",
+    "VerifiedJson.DocumentSpec.euro_utf8",
+    "VerifiedJson.DocumentSpec.musical_symbol_utf8",
+    "VerifiedJson.DocumentSpec.null_document",
+    "VerifiedJson.DocumentSpec.empty_array_document",
+    "VerifiedJson.DocumentSpec.string_A",
+    "VerifiedJson.DocumentSpec.empty_string",
+    "VerifiedJson.DocumentSpec.escaped_tab",
+    "VerifiedJson.DocumentSpec.duplicate_members_representable",
+    "VerifiedJson.DocumentSpec.lone_high_surrogate_string",
+    "VerifiedJson.DocumentSpec.supplementary_utf16",
+    "VerifiedJson.DocumentSpec.quote_not_raw",
+    "VerifiedJson.DocumentSpec.control_not_raw",
+    "VerifiedJson.DocumentSpec.surrogate_not_scalar",
+    "VerifiedJson.DocumentSpec.above_maximum_not_scalar",
+    "VerifiedJson.DocumentSpec.direct_surrogate_utf8_rejected",
+    "VerifiedJson.DocumentSpec.above_maximum_utf8_rejected",
+    "VerifiedJson.DocumentSpec.overlong_two_rejected",
+    "VerifiedJson.DocumentSpec.numberToken_nonempty",
+    "VerifiedJson.DocumentSpec.jsonValue_nonempty",
+    "VerifiedJson.DocumentSpec.empty_not_document",
+    "VerifiedJson.DocumentSpec.empty_array_shape",
+    "VerifiedJson.DocumentSpec.one_member_shape"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "claims": "specification witnesses only; no parser conformance theorem"
+}

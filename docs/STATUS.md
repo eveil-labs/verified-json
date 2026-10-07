@@ -43,7 +43,8 @@ supervisor qualification remain open. The hosted Linux bootstrap workflow passed
 
 ## Still open
 
-The independent full-document byte/AST relation and human review; complete
+The independent full-document byte/AST relation is drafted in DocumentSpec.lean
+with 24 witnesses. Human semantic review remains pending; complete
 UTF-8/escape proofs; number grammar completeness/progress; whole-parser
 soundness/completeness; fuel adequacy and resource model; serializer and neutral
 codec round trips; native API/refinement binding; qualified adversarial
