@@ -3,8 +3,8 @@
 Supported bootstrap: macOS arm64 on Lean 4.35.0-rc4 and Rust 1.96.0. The same
 Lean source also builds on the latest stable 4.34.1 in a scratch compatibility
 lane. Neither observation qualifies a release or the untrusted submission gate.
-The source GitHub workflow proposes Linux x86_64 checks; its hosted run remains
-unperformed until the operator creates/publishes the repository.
+The hosted GitHub Linux x86_64 bootstrap build/test workflow also passed after
+the operator published the repository. This remains candidate behavior evidence.
 
 Install the official pinned Lean archive explicitly into caller-owned scratch;
 verify its SHA-256 from toolchains/lean.json before extraction. The core has no

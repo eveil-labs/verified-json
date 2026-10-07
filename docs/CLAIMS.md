@@ -1,6 +1,6 @@
 # Community work claims
 
-Status: repository-ready candidate policy, not commissioned GitHub configuration. The initial project uses native GitHub Issues, Projects, assignments and comments. No claim bot, external tracker, custom database or automatic expiry service is required.
+Status: native GitHub backlog and Project are configured; reservations and packet readiness still require maintainer review. The initial project uses native GitHub Issues, Projects, assignments and comments. No claim bot, external tracker, custom database or automatic expiry service is required.
 
 ## Purpose and authority
 

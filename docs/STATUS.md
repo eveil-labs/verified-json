@@ -1,8 +1,8 @@
 # Local implementation status
 
 Candidate source, not a release. Community tickets remain NOT_READY; the compact
-wire contract is a review draft. No GitHub issues, board, publication or automatic
-merge/reporting authority has been activated.
+wire contract is a review draft. The public repository and native Draft issues/Project are configured. No automatic
+merge/reporting authority is enabled.
 
 ## Implemented candidate behavior
 
@@ -39,7 +39,7 @@ stable 4.34.1 built the same source and passed the 22 Python cases.
 Independent replay is scoped to the exact 17 exported proof roots and primitive
 basis; it does not establish full parser or native correctness. The known
 unchecked-False canary was rejected. Broader primitive-footprint and adversarial
-supervisor qualification remain open. Native GitHub CI has not run on the host.
+supervisor qualification remain open. The hosted Linux bootstrap workflow passed; this does not qualify proof admission.
 
 ## Still open
 

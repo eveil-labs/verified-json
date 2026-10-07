@@ -8,8 +8,9 @@ fail-closed packet preflight. The first narrow source proofs cover cursor and
 accepted number-token properties. Complete parser correctness, the independent
 full-document relation, transport correctness and release qualification remain
 open. There is no qualified untrusted submission gate or release;
-all 55 community packet templates remain NOT_READY. Native GitHub tracking is
-being set up under explicit operator authorization.
+all 55 community packet templates remain NOT_READY. Native GitHub tracking is live in the
+[Draft board](https://github.com/orgs/eveil-labs/projects/1/views/2) and
+[issues](https://github.com/eveil-labs/verified-json/issues).
 
 Start with [build instructions](docs/BUILD.md), the compact [draft contract](docs/SPEC.md)
 and [current implementation/coverage status](docs/STATUS.md). Build/tests create

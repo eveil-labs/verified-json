@@ -41,8 +41,8 @@
   ],
   "claim_hours": 6,
   "implementation_estimate_hours": null,
-  "github_issue_url": null,
-  "github_issue_node_id": null,
+  "github_issue_url": "https://github.com/eveil-labs/verified-json/issues/13",
+  "github_issue_node_id": "I_kwDOU_QH6s8AAAABVkHEEQ",
   "scope_rule": "Only explicitly sealed artifact/file scope; meaning, checker, workflow, release and reporting changes require dedicated independent human review.",
   "required_gates": [
     "G00",
