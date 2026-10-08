@@ -83,24 +83,48 @@ Writing stdin, reading both output streams and process completion share the
 deadline through a thread-free nonblocking loop. Caller-owned pipes close before
 cleanup, even if an escaped descendant retains its ends. Child environment is
 cleared except a fixed system PATH and LANG. On Unix the child starts in its own
-process group; cleanup signals that group and observes direct-child reaping for
-up to an additional 250 ms. Missing cleanup evidence is infrastructure failure.
+process group. Completion is observed with `waitid(WEXITED | WNOHANG | WNOWAIT)`,
+which keeps the leader waitable and reserves its process ID even after exit.
+After a successful response with exit zero and EOF on both output streams,
+cleanup only reaps the direct child; it sends no signal. This does not establish
+that silent descendants are absent. On failure, timeout or an output cap,
+cleanup checks waitable ownership, signals the group and direct child **before**
+the first reap, then observes direct-child reaping. Cleanup has a separate 250 ms
+budget. No later signal is sent after reaping releases the ID. A missing
+waitable identity (`ECHILD`) refuses signaling and is infrastructure failure;
+missing cleanup evidence is likewise infrastructure failure.
 Group-signal errors retain their native error code and still trigger bounded
 direct-child fallback. When a request already has a limit/protocol failure and
 cleanup also fails, both observations are retained; the limit is not relabeled
-as syntax. Successful response bytes cannot become an approved result when
-teardown is uncertain. Negative lifecycle fixtures separately check the primary
+as syntax. Successful response bytes require observed direct-child reaping before
+the call returns success. Negative lifecycle fixtures separately check the primary
 failure and require observed direct-child reaping; they do not establish that
 every descendant was contained or killed.
+The embedding application must give this call exclusive reaping ownership of
+its child and must not ignore `SIGCHLD` or enable automatic child reaping
+(`SA_NOCLDWAIT`). An unrelated thread/signal handler consuming the child's status
+breaks that precondition; this API cannot prevent another reaper's actions. The
+standalone CLI does not install such a handler. The pinned safe rustix process
+surface does not inspect process-wide signal dispositions; observed loss of
+waitable ownership is refused rather than treated as successful cleanup.
+On macOS, group signaling can return `EPERM` for a group containing only zombies;
+the failure path retains that uncertainty instead of treating every `EPERM` as
+proof that no live descendants remain. The completed-exchange path needs no group
+signal and makes no such descendant claim.
+[Darwin group-signaling implementation](https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/kern_sig.c).
 The API does not spawn detached I/O workers. This is native lifecycle management, not an
 adversarial sandbox: an executable can deliberately escape its group. There is
 no OS memory cap or guarantee against side effects of the chosen executable.
 The parent validation/release envelope must bind the oracle executable digest,
 compiler/runtime/target and protocol identity; this draft CLI does not enforce
 a cryptographic artifact pin or prevent path replacement races. The nonblocking
-transport is implemented only on Unix; current evidence is for the local test
+transport requires Unix and the pinned rustix non-reaping wait/status APIs;
+platforms lacking them refuse before spawning. Linux and macOS expose the required
+APIs. Current execution evidence is for the local test
 platform, with other supported-platform qualification still required. The safe
-native syscall boundary is rustix and the operating system. [rustix APIs](https://docs.rs/rustix/1.1.5/rustix/fs/fn.fcntl_setfl.html)
+native syscall boundary is rustix and the operating system.
+[Nonblocking I/O](https://docs.rs/rustix/1.1.5/rustix/fs/fn.fcntl_setfl.html),
+[non-reaping process observation](https://docs.rs/rustix/1.1.5/rustix/process/fn.waitid.html).
 
 ## Invocation and observations
 
@@ -133,3 +157,8 @@ duplicate order, exact exponent spelling, huge-but-short exponent tokens, lone
 surrogate profiles, missing/blocked workers, bounded output and seeded CLI
 discrepancies. Shell oracle fixtures are explicitly fake protocol peers; actual
 Lean-oracle integration is separately recorded by the parent.
+Lifecycle regressions check signal-before-reap ordering through an operation
+seam, loss-of-identity refusal, combined failures, repeated observation of a real
+waitable child, and pipe-holders after leader exit. Detached fixtures terminate
+through their own bounded release protocol; tests do not force PID reuse or
+signal unrelated processes.

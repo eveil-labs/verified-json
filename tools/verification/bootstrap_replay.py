@@ -10,10 +10,11 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
 from typing import Any
 
 from preflight import GuardError, _object, _read_regular
+from process_runner import run_bounded
+from source_envelope import source_files, files_digest, load_root_manifest
 
 TOOLS = ("lean", "leanexport", "leanchecker-paranoid", "nanoda_bin")
 AXIOMS = ["propext", "Quot.sound", "Classical.choice"]
@@ -27,7 +28,8 @@ PRIMITIVES = [
     "outParam", "Quot", "Quot.mk", "Quot.lift", "Quot.ind",
 ]
 MODULES = ["VerifiedJson.Cursor", "VerifiedJson.Grammar", "VerifiedJson.Number",
-           "VerifiedJson.String", "VerifiedJson.Serializer"]
+           "VerifiedJson.String", "VerifiedJson.Serializer", "VerifiedJson.DocumentSpec",
+           "VerifiedJson.Transport", "VerifiedJson.Parser"]
 NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)+")
 
 
@@ -55,7 +57,9 @@ def validate_manifest(path: Path, expected_sha256: str, toolchain: Path) -> dict
 
 def replay_bootstrap(*, toolchain: Path, module_root: Path, roots_path: Path,
                      work: Path, manifest_path: Path, expected_manifest_sha256: str,
-                     trusted_bootstrap: bool = False) -> dict[str, Any]:
+                     trusted_bootstrap: bool = False, source_root: Path | None = None,
+                     expected_source_sha256: str | None = None,
+                     expected_roots_sha256: str | None = None) -> dict[str, Any]:
     result: dict[str, Any] = {"schema_version": 1, "scope": "trusted-maintainer-bootstrap",
         "status": "not-established", "community_acceptance_available": False,
         "source_artifact_correspondence": "caller must supply a fresh trusted build",
@@ -66,13 +70,26 @@ def replay_bootstrap(*, toolchain: Path, module_root: Path, roots_path: Path,
     try:
         manifest = validate_manifest(manifest_path, expected_manifest_sha256, toolchain)
         raw_roots = _read_regular(roots_path, 128 * 1024)
-        roots_record = json.loads(raw_roots, object_pairs_hook=_object)
+        if expected_roots_sha256 is None or hashlib.sha256(raw_roots).hexdigest() != expected_roots_sha256:
+            raise GuardError("ROOTS_IDENTITY_MISMATCH", "Caller must bind the exact root-manifest bytes", infra=True)
+        if source_root is None or expected_source_sha256 is None:
+            raise GuardError("SOURCE_BINDING_REQUIRED", "Trusted source snapshot identity is required", infra=True)
+        source_map = source_files(source_root)
+        if files_digest(source_map) != expected_source_sha256:
+            raise GuardError("SOURCE_IDENTITY_MISMATCH", "Source snapshot differs from caller's pin")
+        try:
+            relative_roots = roots_path.resolve().relative_to(source_root.resolve()).as_posix()
+        except ValueError as exc:
+            raise GuardError("ROOTS_OUTSIDE_SOURCE", "Root manifest must belong to the bound source snapshot") from exc
+        roots_record = load_root_manifest(source_root, relative_roots)
         roots = roots_record.get("declarations") if isinstance(roots_record, dict) else None
         if not isinstance(roots, list) or not roots or len(roots) > 128 or any(not isinstance(n, str) or not NAME.fullmatch(n) for n in roots):
             raise GuardError("INVALID_ROOTS", "Nonempty bounded declaration names required")
         axioms = roots_record.get("allowed_axioms")
         if len(set(roots)) != len(roots) or not isinstance(axioms, list) or any(not isinstance(a, str) for a in axioms) or sorted(axioms) != sorted(AXIOMS):
             raise GuardError("INVALID_ROOTS", "Duplicate roots or widened axiom policy")
+        meanings = roots_record.get("meaning_roots", [])
+        roots = list(dict.fromkeys(roots + meanings))
         if module_root.is_symlink() or not module_root.is_dir():
             raise GuardError("MISSING_MODULE_ROOT", "Trusted compiled module root unavailable", infra=True)
         for module in MODULES:
@@ -85,15 +102,21 @@ def replay_bootstrap(*, toolchain: Path, module_root: Path, roots_path: Path,
         env = {"PATH": str(toolchain / "bin") + ":/usr/bin:/bin", "LEAN_PATH": str(module_root),
                "TMPDIR": str(work), "LEAN_ABORT_ON_PANIC": "1"}
         result.update(tool_manifest_sha256=expected_manifest_sha256,
-                      roots_sha256=hashlib.sha256(raw_roots).hexdigest(), roots=roots)
+                      roots_sha256=hashlib.sha256(raw_roots).hexdigest(), roots=roots,
+                      source_files_map_sha256=expected_source_sha256,
+                      source_bindings=roots_record["source_bindings"],
+                      source_artifact_correspondence="bound source identity and observed objects; caller supplies fresh trusted build",
+                      olean_sha256={module: hashlib.sha256(module_root.joinpath(*module.split(".")).with_suffix(".olean").read_bytes()).hexdigest() for module in MODULES})
 
         def stage(name: str, argv: list[str], *, stdout_file: Path | None = None) -> tuple[int, str]:
-            try:
-                proc = subprocess.run(argv, env=env, cwd=module_root, stdout=subprocess.PIPE,
-                                      stderr=subprocess.PIPE, timeout=60)
-                code, stdout, stderr = proc.returncode, proc.stdout, proc.stderr
-            except subprocess.TimeoutExpired:
-                code, stdout, stderr = 124, b"", b"Timeout: process result not established"
+            proc = run_bounded(argv, env=env, cwd=module_root, timeout=60)
+            code, stdout, stderr = proc.returncode, proc.stdout, proc.stderr
+            if proc.timed_out or proc.output_limited or proc.cleanup_error or proc.returncode is None or not proc.direct_child_reaped:
+                code = 124
+            result["stages"].append({"name": name + "_lifecycle", "performed": True,
+                "timed_out": proc.timed_out, "output_limited": proc.output_limited,
+                "cleanup_error": proc.cleanup_error, "group_cleanup": proc.group_cleanup,
+                "direct_child_reaped": proc.direct_child_reaped})
             (work / (name + ".stdout")).write_bytes(stdout)
             (work / (name + ".stderr")).write_bytes(stderr)
             if stdout_file is not None:
@@ -118,9 +141,11 @@ def replay_bootstrap(*, toolchain: Path, module_root: Path, roots_path: Path,
             "print_success_message": True, "pp_declars": []}) + "\n")
         native, _ = stage("official_replay", [str(toolchain / "bin/leanchecker-paranoid"), "--from-export", str(export)])
         independent, _ = stage("independent_replay", [str(toolchain / "bin/nanoda_bin"), str(config)])
+        if source_files(source_root) != source_map:
+            raise GuardError("SOURCE_CHANGED", "Source snapshot changed during replay")
         result["status"] = "completed" if native == independent == 0 else "not-established"
         result["reason"] = "Observed exact engine exits on caller-trusted built source; not a qualified community gate"
-    except (GuardError, OSError, UnicodeError, json.JSONDecodeError, RecursionError) as exc:
+    except (GuardError, OSError, UnicodeError, ValueError, RecursionError) as exc:
         result["reason"] = str(exc)
         result["code"] = exc.code if isinstance(exc, GuardError) else "INFRASTRUCTURE_FAILURE"
     return result
@@ -135,10 +160,15 @@ def main() -> int:
     p.add_argument("--manifest", type=Path, required=True)
     p.add_argument("--expected-manifest-sha256", required=True)
     p.add_argument("--trusted-bootstrap", action="store_true")
+    p.add_argument("--source-root", type=Path, required=True)
+    p.add_argument("--expected-source-sha256", required=True)
+    p.add_argument("--expected-roots-sha256", required=True)
     args = p.parse_args()
     result = replay_bootstrap(toolchain=args.toolchain.resolve(), module_root=args.module_root,
         roots_path=args.roots, work=args.work, manifest_path=args.manifest,
-        expected_manifest_sha256=args.expected_manifest_sha256, trusted_bootstrap=args.trusted_bootstrap)
+        expected_manifest_sha256=args.expected_manifest_sha256, trusted_bootstrap=args.trusted_bootstrap,
+        source_root=args.source_root, expected_source_sha256=args.expected_source_sha256,
+        expected_roots_sha256=args.expected_roots_sha256)
     print(json.dumps(result, sort_keys=True))
     return 0 if result["status"] == "completed" else 3
 

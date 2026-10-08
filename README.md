@@ -13,7 +13,9 @@ all 55 community packet templates remain NOT_READY. Native GitHub tracking is li
 [issues](https://github.com/eveil-labs/verified-json/issues).
 
 Start with [build instructions](docs/BUILD.md), the compact [draft contract](docs/SPEC.md)
-and [current implementation/coverage status](docs/STATUS.md). Build/tests create
+and [current implementation/coverage status](docs/STATUS.md). The independent
+[full document contract draft](docs/CONTRACT-REVIEW.md) is awaiting human semantic
+review; its 24 witnesses are separate from the 18 implementation-helper roots. Build/tests create
 artifacts only in an explicitly selected scratch directory, never under this
 source project.
 

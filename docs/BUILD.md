@@ -27,25 +27,50 @@ observations and verifier metadata tests, and builds/tests locked offline Rust.
 No setup hook, download, publication or reporter runs during the check. Evidence
 contains PASS_BOOTSTRAP_CHECKS or NONPASS_BOOTSTRAP_CHECKS and always records
 proof_gate=NOT_QUALIFIED. A source build is not community mathematical admission.
-Independent replay has a separate trusted-maintainer adapter. On the measured
-Darwin arm64 RC distribution, after the fresh build, run:
+The driver copies the entire regular-file source tree to a verified fresh snapshot,
+then requires both proof-root manifests and checks their source bindings in that copy.
+Lean and Cargo checks use that snapshot. result.json records its file-map digest,
+Spec/Grammar/DocumentSpec bindings, root manifest hashes, compiler/Rust/feature
+identities, all native artifact hashes and per-stage lifecycle/log observations.
+`--expected-source-sha256` can bind an independently supplied source-files-map
+pin. This is checked identity evidence for a trusted invocation; it does not
+authenticate an adversarial contributor or establish compiled refinement.
+
+Each stage bounds time, output and cleanup. Normal exited+EOF completion reaps the
+owned direct child without signaling its group; no absence of silent descendants
+is established. When stopping an unfinished, timed-out or output-limited observation,
+the runner signals while the
+leader is unreaped, closes pipes after the bounded drain, and records uncertainty.
+The caller must exclusively own reaping; SIGCHLD auto-reaping/another reaper is
+unsupported. This remains a trusted bootstrap lifecycle boundary, not a sandbox.
+
+Independent replay uses the exact measured Darwin arm64 tools. The source snapshot
+and root-manifest hashes are read from the completed build receipt; they are not
+recomputed from an arbitrary changed checkout. Use the manifest_path and
+manifest_sha256 for the root set you want from result.json:
 
 ```sh
 python3 -B tools/verification/bootstrap_replay.py \
   --toolchain "$VJ_LEAN_TOOLCHAIN_ROOT" \
   --module-root "$VJ_CHECK_WORK/lean/.lake/build/lib/lean" \
-  --roots proofs/roots.json --work "$VJ_REPLAY_WORK" \
+  --source-root "$VJ_CHECK_WORK/source" \
+  --expected-source-sha256 "$VJ_RECORDED_SOURCE_PIN" \
+  --roots "$VJ_CHECK_WORK/source/proofs/document-spec-roots.json" \
+  --expected-roots-sha256 "$VJ_RECORDED_CONTRACT_ROOT_PIN" \
+  --work "$VJ_REPLAY_WORK" \
   --manifest tools/verification/rc4-bootstrap-tools.json \
   --expected-manifest-sha256 49bbd746f22088ffbfc7180b875d39be7fae53196f67ba312fd956d44224c173 \
   --trusted-bootstrap
 ```
 
-The explicit acknowledgment applies only to your known trusted build. The adapter
-reports completed/not-established observations and cannot open a community
-packet. The manifest binds the measured Mac binaries; Linux identities and the
-full adversarial supervisor need separate qualification. See
-[verifier limits](../tools/verification/README.md) for the broader String-literal
-export gap and independent-checker diagnostics.
+This contract recipe imports DocumentSpec and exports its witnesses plus explicit
+meaning roots, including Document/FitsLimits/Utf8Text. Use a separate fresh replay
+work directory and the implementation roots.json binding for the helper/implementation
+set. The adapter records source/root/tool/object/export hashes and does not create
+community PASS. It still assumes a fresh trusted source/build relationship; objects
+and dynamic tool dependencies are not adversarially sealed. The Linux kernel
+identities, broader String export gap and qualified worker remain separate work.
+See [verifier limits](../tools/verification/README.md).
 
 For metadata tests only:
 

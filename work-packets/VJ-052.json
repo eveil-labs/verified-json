@@ -53,7 +53,7 @@
     "G08",
     "G09"
   ],
-  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "null_binding_reason": "Candidate project source exists, but this template's task-specific reviewed target, dependency and acceptance identities are not sealed; the applicable manual-review policy or qualified validator must be frozen before any live claim.",
   "validator": {
     "kind": "unqualified-template",
     "status": "NOT_READY",

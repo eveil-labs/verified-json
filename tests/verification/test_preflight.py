@@ -5,12 +5,13 @@ import json
 import os
 from pathlib import Path
 import sys
+import subprocess
 import tempfile
 import unittest
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "tools" / "verification"))
-from preflight import inspect_packet
+from preflight import MAX_JSON_INTEGER_DIGITS, MAX_PACKET_BYTES, inspect_packet
 
 
 class PacketPreflightTests(unittest.TestCase):
@@ -84,6 +85,68 @@ class PacketPreflightTests(unittest.TestCase):
         self.path.write_text('{"id":"VJ-009","id":"VJ-010"}')
         result = inspect_packet(self.path)
         self.assertEqual(result["code"], "DUPLICATE_JSON_KEY")
+
+    def integer_packet(self, digits, *, negative=False):
+        # Write numeric syntax directly: do not let the test's int conversion
+        # or json encoder fail before the preflight sees the input.
+        prefix = json.dumps(self.packet)[:-1]
+        raw = prefix + ', "extra_integer": ' + ("-" if negative else "") + "9" * digits + "}"
+        self.assertLess(len(raw.encode()), MAX_PACKET_BYTES)
+        self.path.write_text(raw)
+
+    def cli_result(self, *, env=None):
+        process = subprocess.run(
+            [sys.executable, "-B", str(REPO / "tools/verification/preflight.py"), "--packet", str(self.path)],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=5, env=env,
+        )
+        self.assertEqual(process.stderr, b"")
+        return process, json.loads(process.stdout)
+
+    def test_5000_digit_integer_has_structured_api_and_cli_rejection(self):
+        limit_before = sys.get_int_max_str_digits()
+        for negative in (False, True):
+            self.integer_packet(5000, negative=negative)
+            result = inspect_packet(self.path)
+            self.assertEqual((result["verdict"], result["code"]), ("REJECT", "INVALID_JSON"))
+            self.assertNoExecution(result)
+            process, cli = self.cli_result()
+            self.assertEqual(process.returncode, 2)
+            self.assertEqual(cli, result)
+        self.assertEqual(sys.get_int_max_str_digits(), limit_before)
+
+    def test_integer_bound_is_inclusive_and_sign_does_not_cost_a_digit(self):
+        for negative in (False, True):
+            self.integer_packet(MAX_JSON_INTEGER_DIGITS, negative=negative)
+            result = inspect_packet(self.path)
+            self.assertEqual((result["verdict"], result["code"]), ("INFRA", "NOT_READY"))
+            self.assertNoExecution(result)
+            process, cli = self.cli_result()
+            self.assertEqual(process.returncode, 3)
+            self.assertEqual(cli, result)
+            self.integer_packet(MAX_JSON_INTEGER_DIGITS + 1, negative=negative)
+            result = inspect_packet(self.path)
+            self.assertEqual((result["verdict"], result["code"]), ("REJECT", "INVALID_JSON"))
+
+    def test_interpreter_integer_policy_is_not_disabled_or_relied_on(self):
+        # Changes are confined to fresh test children; the host setting is never
+        # modified. A stricter interpreter still produces a structured receipt.
+        self.integer_packet(1000)
+        env = dict(os.environ, PYTHONINTMAXSTRDIGITS="640")
+        process, result = self.cli_result(env=env)
+        self.assertEqual(process.returncode, 2)
+        self.assertEqual((result["verdict"], result["code"]), ("REJECT", "INVALID_JSON"))
+        self.integer_packet(5000)
+        env = dict(os.environ, PYTHONINTMAXSTRDIGITS="0")
+        process, result = self.cli_result(env=env)
+        self.assertEqual(process.returncode, 2)
+        self.assertEqual((result["verdict"], result["code"]), ("REJECT", "INVALID_JSON"))
+
+    def test_nonfinite_constants_still_reject(self):
+        for spelling in ("NaN", "Infinity", "-Infinity"):
+            self.path.write_text(json.dumps(self.packet)[:-1] + ', "extra": ' + spelling + "}")
+            result = inspect_packet(self.path)
+            self.assertEqual((result["verdict"], result["code"]), ("REJECT", "INVALID_JSON"))
+            self.assertNoExecution(result)
 
     def test_malformed_structural_types_fail_closed(self):
         original = dict(self.packet)

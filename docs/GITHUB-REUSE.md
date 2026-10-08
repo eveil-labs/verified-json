@@ -1,8 +1,13 @@
 # GitHub feature reuse
 
-Use native GitHub features for the initial contributor workflow. No claim bot, custom tracker, database, hosting service or automatic expiry action is introduced. The repository scaffold is prepared documentation; hosted configuration happens during the separate repository setup phase.
+Native GitHub tracking and the bootstrap workflow are configured: the public
+repository has Draft issues, milestones, sub-issues, prerequisite links and a
+Project board. See [the setup record](GITHUB.md). Task-specific packet freezing,
+claim-process rehearsal, required-check and protected-branch review enforcement,
+and release qualification remain launch preparation. No claim bot, custom
+tracker, database, hosting service or automatic expiry action is enabled.
 
-## Features used now
+## Native features and current scope
 
 | Need | Existing GitHub feature | Project convention |
 | --- | --- | --- |
@@ -12,7 +17,7 @@ Use native GitHub features for the initial contributor workflow. No claim bot, c
 | Current contributor | Issue assignee and comments | Maintainer acknowledges a six-hour reservation before work is exclusive by courtesy |
 | Precise expiry | Comment and optional Project text field | Record whole-second UTC start and expiry; manage expiration manually |
 | Task proposals | Native issue forms | Forms do not activate a proof packet or grant a reservation |
-| Submission and review | Fork/branch PRs, linked issues, reviewers and required checks | Trusted packet and actual CI evidence govern acceptance |
+| Submission and review | Fork/branch PRs, linked issues, reviewers and required checks | Bootstrap CI runs; required-check and review enforcement still need launch qualification |
 | LLM context | Root AGENTS.md and small instruction entry points | Keep one source of rules; contributors can use any LLM |
 | RC and stable qualification | GitHub Actions and manual workflow dispatch | Planned release workflow, not a new service; final-pin checks precede publication |
 
@@ -28,8 +33,8 @@ Built-in Project workflows can reflect closed issues or merged PRs as Done. That
 
 ## Deferred optional action
 
-The Lean community's [intentions action](https://github.com/leanprover-community/intentions) documents hour-based claim durations, renewal and expiry sweeps. It is a possible later replacement for manual coordination, not an initial dependency. Its schedules are best effort; readiness, prerequisites, cumulative renewal and race behavior need separate qualification. If reconsidered, inspect the exact workflow/action revisions and permissions, and rehearse blocked tasks, expiry, PR transitions and concurrent operations before enabling it. No workflow, token or bot command for it is prepared in this scaffold.
+The Lean community's [intentions action](https://github.com/leanprover-community/intentions) documents hour-based claim durations, renewal and expiry sweeps. It is a possible later replacement for manual coordination, not an initial dependency. Its schedules are best effort; readiness, prerequisites, cumulative renewal and race behavior need separate qualification. If reconsidered, inspect the exact workflow/action revisions and permissions, and rehearse blocked tasks, expiry, PR transitions and concurrent operations before enabling it. No workflow, token or bot command for it is enabled in this project.
 
 ## Proof verification remains a separate concern
 
-GitHub required checks orchestrate validation; they do not themselves check Lean proof meaning. [VERIFICATION.md](VERIFICATION.md) and [TOOL-ASSESSMENT.md](TOOL-ASSESSMENT.md) describe reusing an existing comparator/replay architecture with a small qualified adapter. The initial backlog assigns actual gate implementation and qualification before public mathematical tickets can become Ready.
+When configured, GitHub required checks orchestrate validation; they do not themselves check Lean proof meaning. [VERIFICATION.md](VERIFICATION.md) and [TOOL-ASSESSMENT.md](TOOL-ASSESSMENT.md) describe reusing an existing comparator/replay architecture with a small qualified adapter. The initial backlog assigns actual gate implementation and qualification before public mathematical tickets can become Ready.

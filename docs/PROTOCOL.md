@@ -3,10 +3,16 @@
 This transport is independent of the JSON parser being compared. Its current
 implementation is a prototype; J17 lossless-codec proof remains open.
 
-One request process receives one ASCII hex line encoding JSON input bytes, then
-EOF. Hex may use either case; spaces inside the line are invalid. The request
-length is bounded by twice the JSON input-byte budget plus a newline. Empty hex
-is an empty JSON document.
+One request process receives one ASCII hex request encoding JSON input bytes,
+optionally followed by one LF, then EOF. Hex may use either case; spaces and
+embedded line breaks are invalid. Empty hex is an empty JSON document.
+
+The raw request cap is `2 * defaultLimits.inputBytes + 3` bytes, including the
+terminal LF when present. This deliberately permits a well-framed request for
+one decoded byte beyond the JSON input-byte budget: that request reaches the
+parser and returns `limit`. A larger decoded payload exceeds the framing cap
+and returns `transport` before parsing. The framing cap and the parser's
+input-byte limit therefore describe different boundaries.
 
 Exactly one response line is written:
 

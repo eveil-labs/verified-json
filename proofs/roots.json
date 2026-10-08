@@ -18,7 +18,8 @@
     "VerifiedJson.Number.zero_lexeme_valid",
     "VerifiedJson.Number.incomplete_exponent_rejected",
     "VerifiedJson.StringParser.scalarUnits_bmp",
-    "VerifiedJson.escapeUnit_length"
+    "VerifiedJson.escapeUnit_length",
+    "VerifiedJson.StringParser.parse_past_end"
   ],
   "allowed_axioms": [
     "propext",
@@ -37,5 +38,59 @@
     "binary64",
     "Rust refinement",
     "cache"
+  ],
+  "source_bindings": [
+    {
+      "path": "lean/Main.lean",
+      "sha256": "d428ff82f10b53c57b4a8fa66841409e4c0168134c3efa98ac2d60b8fb9a4bf5"
+    },
+    {
+      "path": "lean/VerifiedJson/Cursor.lean",
+      "sha256": "12ea287646bceaab059f07c956738c930f6d7383e76322bc28651048b52c1732"
+    },
+    {
+      "path": "lean/VerifiedJson/DocumentSpec.lean",
+      "sha256": "ee1c73d10a6ff7daa28867c04c9f8b83821ba0044335742432b34ac7a345103e"
+    },
+    {
+      "path": "lean/VerifiedJson/Grammar.lean",
+      "sha256": "8c51710ce051136b07aa77169bc0d2ae42d096b09f57cedc389e1cf6e2906fb7"
+    },
+    {
+      "path": "lean/VerifiedJson/Number.lean",
+      "sha256": "b8de1f71bf47cec629e341312f8b6b2fa3a90759cb5a7189386cc22eaabb50aa"
+    },
+    {
+      "path": "lean/VerifiedJson/Parser.lean",
+      "sha256": "49272ec8a3df3b3b8609a2b26ac6b2e63e97598fdc430a9271846af3082e2513"
+    },
+    {
+      "path": "lean/VerifiedJson/Serializer.lean",
+      "sha256": "4f49d0bcff464ac62533d8e11de39d94634af9b0f170fa5b7e58d9d8d8ec2d1b"
+    },
+    {
+      "path": "lean/VerifiedJson/Spec.lean",
+      "sha256": "21980b95b19f651f7841fa0d661197a45d5f5fef071ae6e5a7c32f94124f31b7"
+    },
+    {
+      "path": "lean/VerifiedJson/String.lean",
+      "sha256": "bf9de47682adf1a7b440e9dbcd102d6fa5e4f3b264120fdb3d997f1779dfab89"
+    },
+    {
+      "path": "lean/VerifiedJson/Transport.lean",
+      "sha256": "8e56b4a76f18d6ba38d37400803777ba6bc891d102e3ddcc157b000ec0a16a95"
+    },
+    {
+      "path": "lean/VerifiedJson.lean",
+      "sha256": "37ee555698008c6f5bdac8ac0ff27873005472939ba455c2451b0f5ac1ce18dc"
+    }
+  ],
+  "meaning_roots": [
+    "VerifiedJson.Value",
+    "VerifiedJson.Limits",
+    "VerifiedJson.ParseError",
+    "VerifiedJson.parseDocument",
+    "VerifiedJson.serialize",
+    "VerifiedJson.Transport.encode"
   ]
 }

@@ -1,6 +1,7 @@
 import VerifiedJson.Spec
 import VerifiedJson.Cursor
 import VerifiedJson.Grammar
+import VerifiedJson.DocumentSpec
 import VerifiedJson.Number
 import VerifiedJson.String
 import VerifiedJson.Parser

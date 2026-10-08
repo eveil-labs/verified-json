@@ -1,4 +1,5 @@
 import VerifiedJson.Spec
+import VerifiedJson.Number
 
 namespace VerifiedJson.Transport
 
@@ -34,6 +35,8 @@ private def encodeFuel (fuel : Nat) (v : Value) (cap : Nat) :
       let bytes := s.toUTF8
       if bytes.data.any (fun b => b.toNat > 127) then
         .error ⟨.unsupported, 0⟩
+      else if !Number.isValidLexeme s then
+        .error ⟨.syntax, 0⟩
       else
         let header ← count bytes.size
         let tagged ← append (ByteArray.mk #[3]) header cap
@@ -56,7 +59,9 @@ private def encodeFuel (fuel : Nat) (v : Value) (cap : Nat) :
         let childBytes ← encodeFuel fuel child cap
         append withKey childBytes cap) tagged
 
-/-- Prototype encoding, with depth and output bounds. Codec refinement is open. -/
+/-- Prototype encoding, with depth and output bounds. Invalid ASCII number lexemes
+are rejected as syntax; non-ASCII number fields retain the unsupported outcome.
+Codec refinement is open. -/
 def encode (v : Value) (depth : Nat := 128) (cap : Nat := maxResponseBytes) :
     Except ParseError ByteArray := encodeFuel (depth + 1) v cap
 

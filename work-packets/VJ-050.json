@@ -22,7 +22,7 @@
   "acceptance_criteria": [
     "Each claimed API/profile/platform has evidence or an explicit exclusion; binary64 and runtime claims cannot borrow core evidence.",
     "Packaged source/bytes, dependency/feature closure and release identity are pinned; partial publication reconciliation is planned.",
-    "Only authorized qualified artifacts may promote; optional P7\u2013P9 products are not prerequisites for a correctly scoped core/comparison stable channel.",
+    "Only authorized qualified artifacts may promote; optional P7–P9 products are not prerequisites for a correctly scoped core/comparison stable channel.",
     "If checked-runtime support is claimed, VJ-044 through VJ-046 are additional required evidence; optional runtime does not block the core/comparison stable channel."
   ],
   "human_review": "Release owner and independent contract/native/package assurance approval",
@@ -57,7 +57,7 @@
     "G08",
     "G09"
   ],
-  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "null_binding_reason": "Candidate project source exists, but this template's task-specific reviewed target, dependency and acceptance identities are not sealed; the applicable manual-review policy or qualified validator must be frozen before any live claim.",
   "validator": {
     "kind": "unqualified-template",
     "status": "NOT_READY",

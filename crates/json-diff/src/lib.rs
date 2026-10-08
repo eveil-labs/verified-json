@@ -394,42 +394,188 @@ fn drain_pipe(
 }
 
 #[cfg(unix)]
-fn stop_process(child: &mut Child, already_reaped: bool) -> Result<(), OracleFailure> {
+fn child_pid(child: &Child) -> std::io::Result<rustix::process::Pid> {
     let raw_pid = child.id();
-    if raw_pid <= 1 {
-        return Err(OracleFailure::Cleanup(
-            "invalid child process-group identity".into(),
-        ));
+    if raw_pid <= 1 || raw_pid > i32::MAX as u32 {
+        return Err(std::io::Error::other("invalid child process identity"));
     }
-    let pid = rustix::process::Pid::from_raw(raw_pid as i32).ok_or(OracleFailure::Cleanup(
-        "invalid child process-group identity".into(),
-    ))?;
-    let group_issue = match rustix::process::kill_process_group(pid, rustix::process::Signal::KILL)
+    rustix::process::Pid::from_raw(raw_pid as i32)
+        .ok_or_else(|| std::io::Error::other("invalid child process identity"))
+}
+
+#[cfg(unix)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+struct ChildExit {
+    code: Option<i32>,
+}
+
+// rustix 1.1.5 does not provide the needed waitid/status API on these targets.
+// Refuse before spawning instead of falling back to a reaping completion poll.
+#[cfg(unix)]
+const HAS_WAITID: bool = !cfg!(any(
+    target_os = "cygwin",
+    target_os = "espidf",
+    target_os = "horizon",
+    target_os = "openbsd",
+    target_os = "redox",
+    target_os = "vita",
+    target_os = "wasi",
+    target_os = "emscripten",
+    target_os = "fuchsia",
+    target_os = "netbsd",
+));
+
+#[cfg(unix)]
+fn observe_child_exit(child: &Child) -> std::io::Result<Option<ChildExit>> {
+    #[cfg(not(any(
+        target_os = "cygwin",
+        target_os = "espidf",
+        target_os = "horizon",
+        target_os = "openbsd",
+        target_os = "redox",
+        target_os = "vita",
+        target_os = "wasi",
+        target_os = "emscripten",
+        target_os = "fuchsia",
+        target_os = "netbsd",
+    )))]
     {
-        Ok(()) | Err(rustix::io::Errno::SRCH) => None,
-        Err(error) => Some(format!(
-            "process-group termination not established: {error:?}"
-        )),
-    };
-    if already_reaped {
-        return group_issue.map_or(Ok(()), |detail| {
-            Err(OracleFailure::Cleanup(format!(
-                "{detail}; direct child already reaped"
-            )))
-        });
+        use rustix::process::{waitid, WaitId, WaitIdOptions};
+        // Keep the leader waitable, including after exit, until group signaling
+        // has finished. A reaping poll here would make its PID reusable.
+        let status = waitid(
+            WaitId::Pid(child_pid(child)?),
+            WaitIdOptions::EXITED | WaitIdOptions::NOHANG | WaitIdOptions::NOWAIT,
+        )?;
+        status
+            .map(|status| {
+                if status.exited() || status.killed() || status.dumped() {
+                    Ok(ChildExit {
+                        code: status.exit_status(),
+                    })
+                } else {
+                    Err(std::io::Error::other("unexpected child waitid status"))
+                }
+            })
+            .transpose()
     }
-    let _ = child.kill();
-    let deadline = Instant::now() + Duration::from_millis(250);
+    #[cfg(any(
+        target_os = "cygwin",
+        target_os = "espidf",
+        target_os = "horizon",
+        target_os = "openbsd",
+        target_os = "redox",
+        target_os = "vita",
+        target_os = "wasi",
+        target_os = "emscripten",
+        target_os = "fuchsia",
+        target_os = "netbsd",
+    ))]
+    {
+        let _ = child;
+        Err(std::io::Error::new(
+            std::io::ErrorKind::Unsupported,
+            "non-reaping child observation unavailable on this platform",
+        ))
+    }
+}
+
+// The seam keeps cleanup ordering independently testable without PID churn or
+// signals to unrelated processes. Only reap() may consume the child status.
+#[cfg(unix)]
+trait ProcessControl {
+    fn observe(&self) -> std::io::Result<Option<ChildExit>>;
+    fn signal_group(&mut self) -> std::io::Result<()>;
+    fn kill_direct(&mut self) -> std::io::Result<()>;
+    fn reap(&mut self) -> std::io::Result<bool>;
+}
+
+#[cfg(unix)]
+impl ProcessControl for Child {
+    fn observe(&self) -> std::io::Result<Option<ChildExit>> {
+        observe_child_exit(self)
+    }
+    fn signal_group(&mut self) -> std::io::Result<()> {
+        rustix::process::kill_process_group(child_pid(self)?, rustix::process::Signal::KILL)
+            .map_err(Into::into)
+    }
+    fn kill_direct(&mut self) -> std::io::Result<()> {
+        self.kill()
+    }
+    fn reap(&mut self) -> std::io::Result<bool> {
+        self.try_wait().map(|status| status.is_some())
+    }
+}
+
+#[cfg(unix)]
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum CleanupMode {
+    CompletedExchange,
+    Stop,
+}
+
+#[cfg(unix)]
+fn cleanup_process(
+    process: &mut impl ProcessControl,
+    mode: CleanupMode,
+    cleanup_budget: Duration,
+) -> Result<(), OracleFailure> {
+    let deadline = Instant::now() + cleanup_budget;
+    // An embedding caller must not independently reap this child or enable
+    // SIGCHLD auto-reaping. Refuse to signal if lost waitable ownership is observed.
+    let observed = loop {
+        match process.observe() {
+            Ok(observed) => break observed,
+            Err(error) if error.kind() == std::io::ErrorKind::Interrupted => {
+                if Instant::now() >= deadline {
+                    return Err(OracleFailure::Cleanup(
+                        "child ownership observation interrupted until cleanup deadline; no signals sent".into(),
+                    ));
+                }
+            }
+            Err(error) => {
+                return Err(OracleFailure::Cleanup(format!(
+                    "waitable child ownership not established: {error}; no signals sent"
+                )))
+            }
+        }
+    };
+    let group_issue = if mode == CleanupMode::CompletedExchange {
+        if observed != Some(ChildExit { code: Some(0) }) {
+            return Err(OracleFailure::Cleanup(
+                "completed exchange has no waitable successful child exit; no signals sent".into(),
+            ));
+        }
+        // A valid exchange has already observed exit 0 and EOF on both pipes.
+        // Only reap the direct child. This does not prove there are no silent
+        // descendants, and avoids Darwin's ambiguous zombie-only killpg EPERM.
+        None
+    } else {
+        let issue = match process.signal_group() {
+            Ok(()) => None,
+            Err(error) if error.raw_os_error() == Some(rustix::io::Errno::SRCH.raw_os_error()) => {
+                None
+            }
+            Err(error) => Some(format!(
+                "process-group termination not established: {error:?}"
+            )),
+        };
+        // Every signal precedes the first reap. Never signal a numeric identity
+        // after reap() has made the leader PID eligible for reuse.
+        let _ = process.kill_direct();
+        issue
+    };
     loop {
-        match child.try_wait() {
-            Ok(Some(_)) => {
+        match process.reap() {
+            Ok(true) => {
                 return group_issue.map_or(Ok(()), |detail| {
                     Err(OracleFailure::Cleanup(format!(
                         "{detail}; direct child reaped after bounded fallback"
                     )))
                 })
             }
-            Ok(None) => {}
+            Ok(false) => {}
+            Err(error) if error.kind() == std::io::ErrorKind::Interrupted => {}
             Err(error) => {
                 return Err(OracleFailure::Cleanup(format!(
                     "direct-child reaping not established: {error}; group issue={group_issue:?}"
@@ -442,6 +588,22 @@ fn stop_process(child: &mut Child, already_reaped: bool) -> Result<(), OracleFai
             ));
         }
         std::thread::sleep(Duration::from_millis(2));
+    }
+}
+
+#[cfg(unix)]
+fn finish_run(
+    result: Result<OracleRun, OracleFailure>,
+    cleanup: Result<(), OracleFailure>,
+) -> Result<OracleRun, OracleFailure> {
+    match (result, cleanup) {
+        (Ok(run), Ok(())) => Ok(run),
+        (Err(primary), Ok(())) => Err(primary),
+        (Ok(_), Err(cleanup)) => Err(cleanup),
+        (Err(primary), Err(cleanup)) => Err(OracleFailure::WithCleanup {
+            primary: Box::new(primary),
+            cleanup: Box::new(cleanup),
+        }),
     }
 }
 
@@ -464,6 +626,11 @@ pub fn run_oracle(
     timeout: Duration,
     limits: Limits,
 ) -> Result<OracleRun, OracleFailure> {
+    if !HAS_WAITID {
+        return Err(OracleFailure::Io(
+            "non-reaping child observation unavailable on this platform".into(),
+        ));
+    }
     if input.len() > INPUT_LIMIT {
         return Err(OracleFailure::WireLimit("input".into()));
     }
@@ -548,14 +715,16 @@ pub fn run_oracle(
                 "stderr",
             )?;
             if status.is_none() {
-                status = child
-                    .try_wait()
-                    .map_err(|error| OracleFailure::Io(error.to_string()))?;
+                match observe_child_exit(&child) {
+                    Ok(observed) => status = observed,
+                    Err(error) if error.kind() == std::io::ErrorKind::Interrupted => {}
+                    Err(error) => return Err(OracleFailure::Io(error.to_string())),
+                }
             }
             if let Some(exit) = status.as_ref() {
                 if output_eof && diagnostics_eof && stdin.is_none() {
-                    if !exit.success() {
-                        return Err(OracleFailure::Exit(exit.code()));
+                    if exit.code != Some(0) {
+                        return Err(OracleFailure::Exit(exit.code));
                     }
                     let outcome = parse_response(&output, input.len(), limits)?;
                     return Ok(OracleRun {
@@ -572,15 +741,15 @@ pub fn run_oracle(
     })();
     // All caller-owned pipes have been dropped before cleanup: no detached I/O
     // threads or blocked joins remain, even if an escaped descendant holds pipes.
-    match (result, stop_process(&mut child, status.is_some())) {
-        (Ok(run), Ok(())) => Ok(run),
-        (Err(primary), Ok(())) => Err(primary),
-        (Ok(_), Err(cleanup)) => Err(cleanup),
-        (Err(primary), Err(cleanup)) => Err(OracleFailure::WithCleanup {
-            primary: Box::new(primary),
-            cleanup: Box::new(cleanup),
-        }),
-    }
+    let mode = if result.is_ok() {
+        CleanupMode::CompletedExchange
+    } else {
+        CleanupMode::Stop
+    };
+    finish_run(
+        result,
+        cleanup_process(&mut child, mode, Duration::from_millis(250)),
+    )
 }
 
 /// Classifies observations, never an all-input proof or an upstream bug verdict.
@@ -784,5 +953,206 @@ mod tests {
             ),
             "semantic_discrepancy"
         );
+    }
+}
+
+#[cfg(all(test, unix))]
+mod lifecycle_tests {
+    use super::*;
+    use std::cell::RefCell;
+    use std::collections::VecDeque;
+
+    struct ProcessFixture {
+        events: RefCell<Vec<&'static str>>,
+        observations: RefCell<VecDeque<Result<Option<ChildExit>, rustix::io::Errno>>>,
+        group_error: Option<rustix::io::Errno>,
+        reap_result: Result<bool, rustix::io::Errno>,
+    }
+
+    impl ProcessFixture {
+        fn exited() -> Self {
+            Self {
+                events: RefCell::new(Vec::new()),
+                observations: RefCell::new(VecDeque::from([Ok(Some(ChildExit { code: Some(0) }))])),
+                group_error: None,
+                reap_result: Ok(true),
+            }
+        }
+    }
+
+    impl ProcessControl for ProcessFixture {
+        fn observe(&self) -> std::io::Result<Option<ChildExit>> {
+            self.events.borrow_mut().push("observe-without-reaping");
+            self.observations
+                .borrow_mut()
+                .pop_front()
+                .expect("unexpected ownership observation")
+                .map_err(Into::into)
+        }
+        fn signal_group(&mut self) -> std::io::Result<()> {
+            assert!(!self.events.borrow().contains(&"reap"));
+            self.events.borrow_mut().push("signal-group");
+            self.group_error.map_or(Ok(()), |error| Err(error.into()))
+        }
+        fn kill_direct(&mut self) -> std::io::Result<()> {
+            assert!(!self.events.borrow().contains(&"reap"));
+            self.events.borrow_mut().push("kill-direct");
+            Ok(())
+        }
+        fn reap(&mut self) -> std::io::Result<bool> {
+            assert!(self.events.borrow().contains(&"observe-without-reaping"));
+            self.events.borrow_mut().push("reap");
+            self.reap_result.map_err(Into::into)
+        }
+    }
+
+    #[test]
+    fn completed_exchange_reaps_without_any_group_or_direct_signal() {
+        let mut process = ProcessFixture::exited();
+        cleanup_process(&mut process, CleanupMode::CompletedExchange, Duration::ZERO).unwrap();
+        assert_eq!(
+            *process.events.borrow(),
+            ["observe-without-reaping", "reap"]
+        );
+    }
+
+    #[test]
+    fn incomplete_child_cannot_take_completed_exchange_cleanup() {
+        let mut process = ProcessFixture::exited();
+        *process.observations.borrow_mut() = VecDeque::from([Ok(None)]);
+        assert!(
+            matches!(cleanup_process(&mut process, CleanupMode::CompletedExchange, Duration::ZERO),
+            Err(OracleFailure::Cleanup(detail)) if detail.contains("no waitable successful child exit"))
+        );
+        assert_eq!(*process.events.borrow(), ["observe-without-reaping"]);
+    }
+
+    #[test]
+    fn all_signals_precede_reaping_even_when_exit_is_already_observed() {
+        let mut process = ProcessFixture::exited();
+        cleanup_process(&mut process, CleanupMode::Stop, Duration::ZERO).unwrap();
+        assert_eq!(
+            *process.events.borrow(),
+            [
+                "observe-without-reaping",
+                "signal-group",
+                "kill-direct",
+                "reap"
+            ]
+        );
+    }
+
+    #[test]
+    fn lost_waitable_identity_never_signals_a_numeric_pid() {
+        let mut process = ProcessFixture::exited();
+        *process.observations.borrow_mut() = VecDeque::from([Err(rustix::io::Errno::CHILD)]);
+        let result = cleanup_process(&mut process, CleanupMode::Stop, Duration::ZERO);
+        assert!(matches!(result, Err(OracleFailure::Cleanup(detail)) if
+            detail.contains("waitable child ownership not established") && detail.ends_with("no signals sent")));
+        assert_eq!(*process.events.borrow(), ["observe-without-reaping"]);
+    }
+
+    #[test]
+    fn interrupted_ownership_observation_cannot_outlive_cleanup_budget() {
+        let mut process = ProcessFixture::exited();
+        *process.observations.borrow_mut() = VecDeque::from([Err(rustix::io::Errno::INTR)]);
+        assert!(matches!(
+            cleanup_process(&mut process, CleanupMode::Stop, Duration::ZERO),
+            Err(OracleFailure::Cleanup(detail)) if detail.ends_with("no signals sent")
+        ));
+        assert_eq!(*process.events.borrow(), ["observe-without-reaping"]);
+    }
+
+    #[test]
+    fn group_signal_failure_retains_uncertainty_after_direct_reap() {
+        let mut process = ProcessFixture::exited();
+        process.group_error = Some(rustix::io::Errno::PERM);
+        let result = cleanup_process(&mut process, CleanupMode::Stop, Duration::ZERO);
+        assert!(matches!(result, Err(OracleFailure::Cleanup(detail)) if
+            detail.contains("process-group termination not established") &&
+            detail.ends_with("direct child reaped after bounded fallback")));
+        assert_eq!(
+            *process.events.borrow(),
+            [
+                "observe-without-reaping",
+                "signal-group",
+                "kill-direct",
+                "reap"
+            ]
+        );
+    }
+
+    #[test]
+    fn absent_group_still_requires_direct_reap() {
+        let mut process = ProcessFixture::exited();
+        process.group_error = Some(rustix::io::Errno::SRCH);
+        process.reap_result = Ok(false);
+        assert!(
+            matches!(cleanup_process(&mut process, CleanupMode::Stop, Duration::ZERO),
+            Err(OracleFailure::Cleanup(detail)) if detail.contains("termination not observed"))
+        );
+    }
+
+    #[test]
+    fn cleanup_uncertainty_suppresses_success_and_preserves_primary_failure() {
+        let mut process = ProcessFixture::exited();
+        process.reap_result = Ok(false);
+        let cleanup = cleanup_process(&mut process, CleanupMode::Stop, Duration::ZERO);
+        let result = finish_run(Err(OracleFailure::OutputLimit("stdout")), cleanup);
+        assert!(
+            matches!(result, Err(OracleFailure::WithCleanup { primary, cleanup }) if
+            *primary == OracleFailure::OutputLimit("stdout") &&
+            matches!(*cleanup, OracleFailure::Cleanup(_)))
+        );
+
+        let run = OracleRun {
+            outcome: OracleOutcome::Accepted(WireValue::Null),
+            stderr_bytes: 0,
+        };
+        assert!(matches!(
+            finish_run(Ok(run), Err(OracleFailure::Cleanup("unobserved".into()))),
+            Err(OracleFailure::Cleanup(_))
+        ));
+    }
+
+    #[test]
+    fn real_completion_observation_keeps_status_waitable_until_cleanup() {
+        if !HAS_WAITID {
+            return;
+        }
+        use std::os::unix::process::CommandExt;
+        let mut child = Command::new("/bin/sh")
+            .args(["-c", "exit 0"])
+            .env_clear()
+            .stdin(Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .process_group(0)
+            .spawn()
+            .unwrap();
+        let deadline = Instant::now() + Duration::from_secs(2);
+        let observation = loop {
+            match observe_child_exit(&child) {
+                Ok(Some(status)) => break Ok(status),
+                Ok(None) if Instant::now() < deadline => {
+                    std::thread::sleep(Duration::from_millis(2));
+                }
+                Ok(None) => break Err(std::io::Error::other("fixture exit not observed")),
+                Err(error) => break Err(error),
+            }
+        };
+        let repeated = observe_child_exit(&child);
+        // Cleanup is always attempted before assertions, including probe failure.
+        let mode = if matches!(repeated, Ok(Some(ChildExit { code: Some(0) }))) {
+            CleanupMode::CompletedExchange
+        } else {
+            CleanupMode::Stop
+        };
+        let cleanup = cleanup_process(&mut child, mode, Duration::from_millis(250));
+        assert_eq!(observation.unwrap(), ChildExit { code: Some(0) });
+        assert_eq!(repeated.unwrap(), Some(ChildExit { code: Some(0) }));
+        cleanup.unwrap();
+        // Child's cached reaped status remains available with no later signal.
+        assert_eq!(child.try_wait().unwrap().unwrap().code(), Some(0));
     }
 }

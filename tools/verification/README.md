@@ -88,3 +88,25 @@ requested in the export. That input is an infrastructure/ordering qualification
 gap, not a refuted theorem. Nanoda's successful typecheck logs also contain an
 axiom pretty-print diagnostic. Keep these limitations visible and qualify the
 actual needed footprint before advertising a complete submission envelope.
+
+## Audit-repair identity and lifecycle
+
+Root manifests and source bindings are required for bootstrap checks. The caller
+can pin the source-files-map digest independently. Builds/tests use a copied
+verified source snapshot; receipts record manifests, source dependencies, features,
+compiler versions and native artifact hashes. Neither self-reported hashes nor
+a trusted snapshot are authentication of hostile candidate code.
+
+The replay command now requires source/root-manifest pins, includes DocumentSpec
+in its fixed import set and exports explicit meaning roots. The contract manifest
+names Document/FitsLimits/Utf8Text as well as its witnesses. This supplies a public
+recipe for the new roots; it does not turn witnesses into parser conformance.
+
+Process execution uses nonblocking streams, bounded output/deadline/drain, and
+non-reaping exit observation. Failure cleanup signals before direct-child reap.
+Normal exited+EOF completion does not signal its group and does not establish
+absence of silent descendants. Sole-reaper/no-auto-reap ownership is required;
+failed or unobserved cleanup is infrastructure. No sandbox is commissioned.
+
+Packet integer conversion is bounded locally and parser ValueError is translated
+to structured INVALID_JSON; the interpreter's global conversion guard is preserved.
