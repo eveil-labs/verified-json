@@ -34,7 +34,6 @@ fn observe_failure(failure: OracleFailure) -> OracleFailure {
         // A group-signal limitation may be retained, but unobserved direct-child
         // cleanup must not make a lifecycle fixture pass.
         assert!(matches!(cleanup.as_ref(), OracleFailure::Cleanup(detail) if
-            detail.ends_with("direct child already reaped") ||
             detail.ends_with("direct child reaped after bounded fallback")));
     }
     failure
@@ -159,19 +158,26 @@ fn escaped_pipe_holder_cannot_leave_io_threads_or_block_the_call() {
     for _ in 0..3 {
         let path = script("cat >/dev/null\nexec /usr/bin/python3 -S \"$0.py\"");
         let python = path.with_extension("sh.py");
-        std::fs::write(&python, "import os, time\npid = os.fork()\nif pid == 0:\n    os.setsid()\n    time.sleep(5)\n    os._exit(0)\nwith open(__file__ + '.pid', 'w') as f:\n    f.write(str(pid))\nos._exit(0)\n").unwrap();
+        std::fs::write(&python, "import os, time\npid = os.fork()\nif pid == 0:\n    os.setsid()\n    with open(__file__ + '.ready', 'w') as f:\n        f.write('ready')\n    deadline = time.monotonic() + 5\n    while time.monotonic() < deadline and not os.path.exists(__file__ + '.release'):\n        time.sleep(0.005)\n    with open(__file__ + '.done', 'w') as f:\n        f.write('done')\n    os._exit(0)\nos._exit(0)\n").unwrap();
         let started = std::time::Instant::now();
         let result = run_oracle(&path, b"null", Duration::from_secs(2), Limits::default());
         let elapsed = started.elapsed();
-        let pid_file = python.with_extension("py.pid");
-        let pid = std::fs::read_to_string(&pid_file)
-            .unwrap_or_else(|error| panic!("fixture did not establish escaped descendant: {error}; result={result:?}; pid_file={pid_file:?}"))
-            .parse::<i32>().unwrap();
-        assert!(pid > 1);
-        // Clean exactly the fixture's escaped descendant, regardless of verdict.
-        let _ = rustix::process::kill_process(
-            rustix::process::Pid::from_raw(pid).unwrap(),
-            rustix::process::Signal::KILL,
+        // Release the owned detached fixture without signaling an unowned raw
+        // PID, which could itself have expired/recycled if this test was paused.
+        // The fixture also self-expires if the test process is interrupted.
+        std::fs::write(python.with_extension("py.release"), b"release").unwrap();
+        let done = python.with_extension("py.done");
+        let release_deadline = std::time::Instant::now() + Duration::from_secs(2);
+        while !done.is_file() && std::time::Instant::now() < release_deadline {
+            std::thread::sleep(Duration::from_millis(5));
+        }
+        assert!(
+            python.with_extension("py.ready").is_file(),
+            "escaped fixture did not start; result={result:?}"
+        );
+        assert!(
+            done.is_file(),
+            "escaped fixture did not finish after release; result={result:?}"
         );
         assert_eq!(
             observe_failure(result.unwrap_err()).primary(),
@@ -179,4 +185,26 @@ fn escaped_pipe_holder_cannot_leave_io_threads_or_block_the_call() {
         );
         assert!(elapsed < Duration::from_secs(4));
     }
+}
+
+#[test]
+fn exited_leader_with_group_pipe_holder_still_obeys_timeout() {
+    let path = script("cat >/dev/null\n/bin/sleep 3 &\nexit 0");
+    let started = std::time::Instant::now();
+    let result = run_oracle(&path, b"null", Duration::from_millis(80), Limits::default());
+    assert_eq!(
+        observe_failure(result.unwrap_err()).primary(),
+        &OracleFailure::Timeout
+    );
+    assert!(started.elapsed() < Duration::from_secs(2));
+}
+
+#[test]
+fn signal_termination_keeps_the_original_exit_category() {
+    let path = script("cat >/dev/null\nkill -TERM $$");
+    let result = run_oracle(&path, b"null", Duration::from_secs(2), Limits::default());
+    assert_eq!(
+        observe_failure(result.unwrap_err()).primary(),
+        &OracleFailure::Exit(None)
+    );
 }

@@ -20,7 +20,7 @@ merge/reporting authority is enabled.
 
 ## Source proofs
 
-proofs/roots.json names 17 candidate roots. They establish cursor EOF/progress,
+proofs/roots.json names 18 candidate roots (the original 17 plus the string start clamp). They establish cursor EOF/progress,
 accepted-token grammar, exact input-span preservation, token-budget/end bounds,
 concrete lexical witnesses, BMP scalar-unit encoding and the fixed width of
 a serialized UTF-16 escape. These are useful bounded steps, not complete JSON
@@ -28,18 +28,22 @@ correctness. Axioms are restricted to propext, Quot.sound and Classical.choice.
 
 ## Observed bootstrap results
 
-A fresh RC build, all 17 transitive-axiom root audits and whole-import-closure
-same-kernel replay passed. The parent suite passed 22 Python cases (9 native
-oracle test methods and 13 packet-preflight cases) and 22 Rust cases. Four additional trusted-replay boundary tests passed after
-the adapter was added. Seven
-synthetic cross-language comparisons produced the expected agreement, shared
-rejection, scalar-profile difference and candidate-limit observations. Latest
-stable 4.34.1 built the same source and passed the 22 Python cases.
+The audit-repair RC build checks 18 implementation helpers, 24 draft contract
+witnesses and 32 explicit meaning definitions. Transitive axiom audits and
+whole-import-closure same-kernel replay passed. The expanded suite comprises 63
+Python cases, 33 Rust cases and 100 native Lean API regression assertions.
+The earlier bootstrap also observed cross-language agreement, shared rejection,
+scalar-profile differences and candidate-limit behavior. Stable 4.34.1 is checked
+separately for compatibility; the development pin remains the RC.
 
-Independent replay is scoped to the exact 17 exported proof roots and primitive
-basis; it does not establish full parser or native correctness. The known
-unchecked-False canary was rejected. Broader primitive-footprint and adversarial
-supervisor qualification remain open. The hosted Linux bootstrap workflow passed; this does not qualify proof admission.
+Independent replay now covers both bound root manifests: 18 helpers plus six
+implementation meanings, and 24 witnesses plus 26 contract meanings. Each export
+passes the official paranoid checker and the independent kernel. This establishes
+only the selected declaration closures under the recorded primitive basis, not
+full parser or native correctness. The earlier unchecked-False canary was rejected.
+Broader primitive-footprint and adversarial supervisor qualification remain open.
+The hosted Linux workflow checks the candidate build and tests; it does not qualify
+proof admission.
 
 ## Still open
 
@@ -64,3 +68,10 @@ acceptance have different scopes. Native execution assumes compiler/runtime/OS
 correctness. Current subprocess bounds do not constitute an adversarial sandbox.
 The preflight deliberately has no mathematical PASS path. Stable promotion,
 public invitation and publication require the remaining qualification/review.
+
+The audit repairs add one narrow out-of-bounds helper theorem, numeric validation
+at the public transport boundary, bounded identity-safe process lifecycle,
+structured large-integer metadata refusal and source-bound bootstrap receipts.
+They do not alter the document grammar, approve the spec, or open proof claims.
+Diagnostic offsets in the draft are explicitly bounded positions; exact/earliest
+ErrorAt semantics are not claimed.

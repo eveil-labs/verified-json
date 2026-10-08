@@ -15,7 +15,7 @@ all 55 community packet templates remain NOT_READY. Native GitHub tracking is li
 Start with [build instructions](docs/BUILD.md), the compact [draft contract](docs/SPEC.md)
 and [current implementation/coverage status](docs/STATUS.md). The independent
 [full document contract draft](docs/CONTRACT-REVIEW.md) is awaiting human semantic
-review; its 24 witnesses are separate from the 17 implementation-helper roots. Build/tests create
+review; its 24 witnesses are separate from the 18 implementation-helper roots. Build/tests create
 artifacts only in an explicitly selected scratch directory, never under this
 source project.
 

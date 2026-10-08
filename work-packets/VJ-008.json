@@ -37,7 +37,7 @@
   "read_only_contract_paths": [
     "lean/VerifiedJson/Spec/"
   ],
-  "goal": "Bind intended J01\u2013J17 obligations to actual elaborated declarations only when those declarations exist.",
+  "goal": "Bind intended J01–J17 obligations to actual elaborated declarations only when those declarations exist.",
   "acceptance_criteria": [
     "Unbuilt roots are marked missing rather than synthesized as passed; public API and codec roots remain explicit.",
     "Sealing fills exact target/source/type/meaning/binding/validator pins and scoped proof-body selectors before a ticket becomes claimable.",
@@ -77,7 +77,7 @@
     "G08",
     "G09"
   ],
-  "null_binding_reason": "Project source and concrete declarations are not yet bootstrapped; maintainer must instantiate and freeze this template before any live claim.",
+  "null_binding_reason": "Candidate project source exists, but this template's task-specific reviewed target, dependency and acceptance identities are not sealed; the applicable manual-review policy or qualified validator must be frozen before any live claim.",
   "validator": {
     "kind": "unqualified-template",
     "status": "NOT_READY",

@@ -16,6 +16,9 @@ import stat
 from typing import Any
 
 MAX_PACKET_BYTES = 128 * 1024
+# Bound decimal conversion independently of any looser interpreter setting.
+# A stricter Python conversion limit remains in force and is caught below.
+MAX_JSON_INTEGER_DIGITS = 4096
 MAX_SUBMISSION_BYTES = 8 * 1024 * 1024
 MAX_SUBMISSION_ENTRIES = 512
 MAX_PATH_DEPTH = 32
@@ -44,6 +47,12 @@ def _object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
             raise GuardError("DUPLICATE_JSON_KEY", f"Duplicate key: {key}")
         out[key] = value
     return out
+
+
+def _integer(text: str) -> int:
+    if len(text) - int(text.startswith("-")) > MAX_JSON_INTEGER_DIGITS:
+        raise GuardError("INVALID_JSON", "JSON integer exceeds the preflight digit bound")
+    return int(text)
 
 
 def _relative_path(value: Any, *, scope: bool = False) -> str:
@@ -186,7 +195,7 @@ def inspect_packet(packet_path: str | Path, submission_root: str | Path | None =
             if digest != expected_packet_sha256:
                 raise GuardError("PACKET_IDENTITY_MISMATCH", "Packet bytes differ from caller's expected identity")
         checked("packet_bytes")
-        packet = json.loads(raw, object_pairs_hook=_object,
+        packet = json.loads(raw, object_pairs_hook=_object, parse_int=_integer,
                             parse_constant=lambda _: (_ for _ in ()).throw(GuardError("INVALID_JSON", "Nonfinite JSON constant")))
         if not isinstance(packet, dict) or not re.fullmatch(r"VJ-\d{3}", str(packet.get("id", ""))):
             raise GuardError("INVALID_PACKET", "Expected a packet object with a VJ-NNN ID")
@@ -233,7 +242,7 @@ def inspect_packet(packet_path: str | Path, submission_root: str | Path | None =
         checked("readiness_inspection")
     except GuardError as exc:
         result.update(verdict="INFRA" if exc.infra else "REJECT", code=exc.code, message=str(exc))
-    except (UnicodeError, json.JSONDecodeError, RecursionError) as exc:
+    except (UnicodeError, ValueError, RecursionError) as exc:
         result.update(verdict="REJECT", code="INVALID_JSON", message=type(exc).__name__)
     except OSError as exc:
         result.update(verdict="INFRA", code="INPUT_IO_FAILURE", message=str(exc))

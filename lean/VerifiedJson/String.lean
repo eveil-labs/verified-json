@@ -84,10 +84,17 @@ private def loop (input : ByteArray) : Nat → Nat → List UInt16 → Except Pa
       loop input fuel next (units.reverse ++ reversed)
 
 /-- Parse a JSON string beginning at an absolute byte offset. The closing quote is consumed.
-Escaped UTF-16 units are retained even when they are unpaired surrogates. -/
+Escaped UTF-16 units are retained even when they are unpaired surrogates.
+A starting offset beyond the input is rejected at the input length. -/
 def parse (input : ByteArray) (start : Nat := 0) : Except ParseError (List UInt16 × Nat) := do
-  if byteAt input start != some 34 then fail .syntax start
+  if input.size < start then fail .syntax input.size
+  else if byteAt input start != some 34 then fail .syntax start
   else loop input (input.size + 1) (start + 1) []
+
+/-- A caller-supplied start beyond the input reports the input boundary. -/
+theorem parse_past_end (input : ByteArray) (start : Nat) (h : input.size < start) :
+    parse input start = .error ⟨.syntax, input.size⟩ := by
+  simp [parse, h, fail]
 
 /-- Valid BMP scalars have the independently specified single-unit UTF-16 encoding. -/
 theorem scalarUnits_bmp (scalar : Nat) (h : scalar ≤ 65535) :

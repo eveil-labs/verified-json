@@ -33,5 +33,47 @@
     "Quot.sound",
     "Classical.choice"
   ],
-  "claims": "specification witnesses only; no parser conformance theorem"
+  "claims": "specification witnesses only; no parser conformance theorem",
+  "source_bindings": [
+    {
+      "path": "lean/VerifiedJson/DocumentSpec.lean",
+      "sha256": "ee1c73d10a6ff7daa28867c04c9f8b83821ba0044335742432b34ac7a345103e"
+    },
+    {
+      "path": "lean/VerifiedJson/Spec.lean",
+      "sha256": "21980b95b19f651f7841fa0d661197a45d5f5fef071ae6e5a7c32f94124f31b7"
+    },
+    {
+      "path": "lean/VerifiedJson/Grammar.lean",
+      "sha256": "8c51710ce051136b07aa77169bc0d2ae42d096b09f57cedc389e1cf6e2906fb7"
+    }
+  ],
+  "meaning_roots": [
+    "VerifiedJson.DocumentSpec.Document",
+    "VerifiedJson.DocumentSpec.DocumentBytes",
+    "VerifiedJson.DocumentSpec.FitsLimits",
+    "VerifiedJson.DocumentSpec.Utf8Text",
+    "VerifiedJson.DocumentSpec.ShapeFits",
+    "VerifiedJson.DocumentSpec.ElementsFit",
+    "VerifiedJson.DocumentSpec.MembersFit",
+    "VerifiedJson.DocumentSpec.JsonValue",
+    "VerifiedJson.DocumentSpec.ArrayElements",
+    "VerifiedJson.DocumentSpec.Member",
+    "VerifiedJson.DocumentSpec.ObjectMembers",
+    "VerifiedJson.DocumentSpec.QuotedString",
+    "VerifiedJson.DocumentSpec.StringContents",
+    "VerifiedJson.DocumentSpec.StringPiece",
+    "VerifiedJson.DocumentSpec.Utf8Scalar",
+    "VerifiedJson.DocumentSpec.IsScalar",
+    "VerifiedJson.DocumentSpec.IsContinuation",
+    "VerifiedJson.DocumentSpec.scalarToUtf16",
+    "VerifiedJson.DocumentSpec.RawAllowed",
+    "VerifiedJson.DocumentSpec.SimpleEscape",
+    "VerifiedJson.DocumentSpec.HexDigit",
+    "VerifiedJson.DocumentSpec.Whitespace",
+    "VerifiedJson.DocumentSpec.IsWhitespace",
+    "VerifiedJson.Grammar.NumberToken",
+    "VerifiedJson.Grammar.NumberParts.Valid",
+    "VerifiedJson.Grammar.NumberParts.encode"
+  ]
 }

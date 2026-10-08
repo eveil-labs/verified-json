@@ -37,7 +37,11 @@ entry. Strings are bounded indirectly by input size. Limits are configurable
 natural numbers, including zero; they require explicit boundary tests.
 
 The result is either an AST or ParseError(kind, offset). Offsets are absolute
-zero-based byte positions; end-of-input may be reported as input length. Kinds
+zero-based diagnostic byte positions within the operation input; end-of-input
+may be reported as input length. This wire-v1 draft promises bounded positions,
+not an exact offending byte or earliest failure. A token-start position or zero
+can be a valid diagnostic. A future precise ErrorAt/prefix-failure contract must
+be reviewed separately. Kinds
 are syntax, utf8, limit and unsupported. utf8 is invalid document encoding. A limit
 outcome makes no statement that the complete input is syntactically invalid.
 Implementation fuel exhaustion is a limit, distinct from syntax. Timeout, crash,

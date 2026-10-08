@@ -1,8 +1,23 @@
 # Contributor backlog and immutable packet templates
 
-Status: candidate planning documents, 2026-10-07. No repository, issue, PR, Project, claim, workflow or artifact release has been created. Every target source pin, declaration binding and qualified validator command is absent. All 55 templates have `claim_ready: false`. File paths below are prospective public-repository paths.
+Status: candidate backlog, 2026-10-07. Candidate source, the public repository,
+bootstrap CI and native GitHub tracking exist. The backlog has 55 Draft packet
+issues and 11 phase parents on the Project board, with 200 prerequisite links;
+see [the current setup](GITHUB.md). All 55 templates still have
+`claim_ready: false` and `validator.status: NOT_READY`. Their task-specific
+reviewed target, dependency and acceptance identities have not been sealed.
+No community proof gate or artifact release is qualified.
 
-This backlog expands the audited P0–P10 project plan into bounded work units. The matching `../work-packets/TICKETS.json` is a full machine-readable template index; it is not a tracker and does not establish that any Lean declaration or gate already exists. The source-plan digest is `07ab8c2bbb1ec40070aa7bdf96cffa2b9bffd9726a051b523af8313c5a915fd3`.
+This backlog expands the audited P0–P10 project plan into bounded work units.
+The matching `../work-packets/TICKETS.json` is a full machine-readable template
+index; native GitHub remains the coordination view. Ticket titles, classes,
+capstone labels and file lists describe planned acceptance work. Some named
+functionality already has a candidate implementation; its acceptance still
+requires the packet-specific review and evidence. Prospective paths describe proposed contribution
+scope and may require a new file or a reviewed reorganization when a packet is
+frozen. Search and assess existing declarations before sealing that scope.
+The source-plan digest is
+`07ab8c2bbb1ec40070aa7bdf96cffa2b9bffd9726a051b523af8313c5a915fd3`.
 
 ## Native GitHub coordination
 

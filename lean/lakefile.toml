@@ -1,6 +1,6 @@
 name = "verifiedJson"
 version = "0.1.0-rc.1"
-defaultTargets = ["VerifiedJson", "verified-json-oracle"]
+defaultTargets = ["VerifiedJson", "verified-json-oracle", "verified-json-api-regression"]
 fixedToolchain = true
 moreLeanArgs = ["-DwarningAsError=true"]
 
@@ -10,3 +10,7 @@ name = "VerifiedJson"
 [[lean_exe]]
 name = "verified-json-oracle"
 root = "Main"
+
+[[lean_exe]]
+name = "verified-json-api-regression"
+root = "VerifiedJson.ApiRegression"

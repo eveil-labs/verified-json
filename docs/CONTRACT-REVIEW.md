@@ -71,6 +71,15 @@ Document b v ∧ FitsLimits b L v  →  P b L = ok v
 
 Before freezing this root, establish document interpretation uniqueness and validate that implementation budgets match the relational count/depth convention. A proof may not introduce “provided the implementation succeeds,” an arbitrary hidden resource premise, or a predicate defined by P as its completeness condition. If explicit work fuel is needed, define its independent cost model and a sufficient bound as a separate reviewed obligation.
 
+**Diagnostic position decision for this draft:** the proposed public promise is
+only an operation-relative, bounded diagnostic position. It does not promise the
+exact offending byte or the earliest invalid prefix. A wrapper returning zero
+for all error offsets satisfies this deliberately limited promise. If a precise
+location is required, define an independent `ErrorAt`/prefix-failure relation,
+including token starts, EOF, UTF-8 sequence starts and precedence, and add a
+separate reviewed theorem. `J16ErrorOffsetBound` alone must never be described as
+error-location correctness. No existing success or grammar obligation is changed.
+
 **J16, results/errors and deployed API:** bind the exact public parser success values and root implementation identity to J05/J06. Define independently what syntax, UTF-8, budget and unsupported-profile outcomes mean. `Utf8Text` is available for the byte-encoding component, but its relation to document syntax and the proposed error policy still need proofs and review. A limit refusal may occur before a full syntax judgment, so it must not be advertised as proof that the input is invalid JSON.
 
 Error offsets are operation-relative bytes: input offsets for parsing, emitted-output offsets for serialization. Public transport tags, compiled artifacts, trusted runtime primitives and cross-language adapters require separate J16 binding/review. None is proved by this declarative grammar.
